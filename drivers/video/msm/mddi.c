@@ -206,7 +206,7 @@ static int mddi_off(struct platform_device *pdev)
 {
 	struct msm_fb_data_type *mfd;
 	boolean dma_pending, dma_update_flag;
-	int ret = 0, i;
+	int ret, i;
 
 	mfd = platform_get_drvdata(pdev);
 
@@ -219,22 +219,11 @@ static int mddi_off(struct platform_device *pdev)
 	}
 
 	pmdh_clk_enable();
-#ifdef CONFIG_FIX_BOOTUP_BLINK
-	if (msmfb_bootup)
-#endif
 	ret = panel_next_off(pdev);
 	pmdh_clk_disable();
-#ifdef CONFIG_FIX_BOOTUP_BLINK
-	//Close power now
-	if (msmfb_bootup)
-	{
-#endif
 
 	if (mddi_pdata && mddi_pdata->mddi_power_save)
 		mddi_pdata->mddi_power_save(0);
-#ifdef CONFIG_FIX_BOOTUP_BLINK
-	}
-#endif
 #ifdef CONFIG_MSM_BUS_SCALING
 	mdp_bus_scale_update_request(0);
 #else

@@ -34,37 +34,9 @@
 #include <linux/gpio.h>
 #include <linux/miscdevice.h>
 #include <linux/spinlock.h>
-
-//#include <linux/pmic8058-nfc.h>
-#include <mach/vreg.h>
-#include <mach/gpio.h>
-#include <mach/irqs.h>
-#include <linux/err.h>
-#include <linux/mfd/pmic8058.h>
 #include <linux/pn544.h>
 
 #define MAX_BUFFER_SIZE	512
-#define PMIC_GPIO_16				 15
-#define PM8058_GPIO_PM_TO_SYS(pm_gpio)     (pm_gpio + NR_GPIO_IRQS)
-
-struct pm8xxx_gpio_init_info {
-	unsigned			gpio;
-	struct pm_gpio			config;
-};
-
-
-static struct pm8xxx_gpio_init_info pn544_ven = {
-	PM8058_GPIO_PM_TO_SYS(PMIC_GPIO_16),
-	{
-		.direction      = PM_GPIO_DIR_OUT,//0x01 out 0x02 in
-		.output_buffer  = PM_GPIO_OUT_BUF_CMOS,
-		.output_value   = 0,
-		.pull           = PM_GPIO_PULL_NO,
-		.vin_sel        = PM8058_GPIO_VIN_S3,
-		.out_strength   = PM_GPIO_STRENGTH_HIGH,
-		.function       = PM_GPIO_FUNC_2,
-	},
-};
 
 struct pn544_dev	{
 	wait_queue_head_t	read_wq;
@@ -210,24 +182,24 @@ static long pn544_dev_ioctl(struct file *filp,
 			/* power on with firmware download (requires hw reset)
 			 */
 			pr_info("%s power on with firmware\n", __func__);
-			gpio_set_value_cansleep(NR_GPIO_IRQS + PMIC_GPIO_16, 0); 
+			gpio_set_value(pn544_dev->ven_gpio, 1);
 			gpio_set_value(pn544_dev->firm_gpio, 1);
 			msleep(20);
-			gpio_set_value_cansleep(NR_GPIO_IRQS + PMIC_GPIO_16, 1);
+			gpio_set_value(pn544_dev->ven_gpio, 0);
 			msleep(60);
-			gpio_set_value_cansleep(NR_GPIO_IRQS + PMIC_GPIO_16, 0);
+			gpio_set_value(pn544_dev->ven_gpio, 1);
 			msleep(20);
 		} else if (arg == 1) {
 			/* power on */
 			pr_info("%s power on\n", __func__);
 			gpio_set_value(pn544_dev->firm_gpio, 0);
-			gpio_set_value_cansleep(NR_GPIO_IRQS + PMIC_GPIO_16, 0);
+			gpio_set_value(pn544_dev->ven_gpio, 1);
 			msleep(20);
 		} else  if (arg == 0) {
 			/* power off */
 			pr_info("%s power off\n", __func__);
 			gpio_set_value(pn544_dev->firm_gpio, 0);
-			gpio_set_value_cansleep(NR_GPIO_IRQS + PMIC_GPIO_16, 1);
+			gpio_set_value(pn544_dev->ven_gpio, 0);
 			msleep(60);
 		} else {
 			pr_err("%s bad arg %lu\n", __func__, arg);
@@ -269,44 +241,16 @@ static int pn544_probe(struct i2c_client *client,
 		pr_err("%s : need I2C_FUNC_I2C\n", __func__);
 		return  -ENODEV;
 	}
-	//IRQ 
+
 	ret = gpio_request(platform_data->irq_gpio, "nfc_int");
-	if (ret){
-		pr_err("gpio_nfc_int request error\n");
+	if (ret)
 		return  -ENODEV;
-	}
-	ret = gpio_tlmm_config(GPIO_CFG(platform_data->irq_gpio, 0, 
-				GPIO_CFG_INPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA),
-			    GPIO_CFG_ENABLE);
-	if (ret){
-		pr_err("gpio_nfc_int config error\n");
-		return  -ENODEV;
-	}
-
-	//VEN
-	ret = gpio_request(NR_GPIO_IRQS + PMIC_GPIO_16, "nfc_ven");//platform_data->ven_gpio ,182+15
-	if (ret){
-		pr_err("gpio_nfc_ven request error\n");
+	ret = gpio_request(platform_data->ven_gpio, "nfc_ven");
+	if (ret)
 		goto err_ven;
-	}
-	ret = pm8xxx_gpio_config(pn544_ven.gpio, &pn544_ven.config);//platform_data->ven_gpio ,15 ###pn544_ven???
-	if (ret) {
-		pr_err("%s: FAIL pm8xxx_gpio_config(): ret=%d.\n",__func__, ret);
-		goto err_ven;
-	}
-
-	//FIRM
 	ret = gpio_request(platform_data->firm_gpio, "nfc_firm");
-	if (ret){
-		pr_err("gpio_nfc_firm request error\n");	
+	if (ret)
 		goto err_firm;
-	}
-
-	ret = gpio_tlmm_config(GPIO_CFG(platform_data->firm_gpio, 0, GPIO_CFG_OUTPUT, GPIO_CFG_PULL_DOWN, GPIO_CFG_2MA), GPIO_CFG_ENABLE);
-	if (ret){
-		pr_err("gpio_nfc_firm config error\n");
-		goto err_firm;
-	}
 
 	pn544_dev = kzalloc(sizeof(*pn544_dev), GFP_KERNEL);
 	if (pn544_dev == NULL) {

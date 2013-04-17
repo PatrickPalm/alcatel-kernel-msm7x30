@@ -179,9 +179,8 @@ static void mddi_ry002z_lcd_ic_init(void)
 		write_client_reg(0xFD,0x06);	
 
 		write_client_reg(0x35,0x00); // tearing on
-		
+
 		write_client_reg(0xCC, 0x03);
-		
 		write_client_reg(0xB6,0x2C);
 		write_client_reg(0xFD,0x2C);
 		 
@@ -461,9 +460,8 @@ void mddi_himax_ic_init_again(void)
 		write_client_reg(0xFD,0x06);	
 
 		write_client_reg(0x35,0x00); // tearing on
-		
+
 		write_client_reg(0xCC, 0x03);
-		
 		write_client_reg(0xB6,0x2C);
 		write_client_reg(0xFD,0x2C);
 		 
@@ -843,7 +841,7 @@ static int __init mddi_ry002z_init(void)
 		pinfo->lcd.v_front_porch = 5;
 		pinfo->lcd.v_pulse_width = 4;
 	}
-	else{
+	else {
 		pinfo->lcd.vsync_enable = FALSE;
 		pinfo->lcd.refx100 = 6300;
 		pinfo->lcd.v_back_porch = 12;

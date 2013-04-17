@@ -79,6 +79,7 @@ struct msm_fb_data_type {
 	DISP_TARGET dest;
 	struct fb_info *fbi;
 
+	struct device *dev;
 	boolean op_enable;
 	uint32 fb_imgType;
 	boolean sw_currently_refreshing;
@@ -131,6 +132,7 @@ struct msm_fb_data_type {
 			      struct fb_cmap *cmap);
 	int (*do_histogram) (struct fb_info *info,
 			      struct mdp_histogram_data *hist);
+	void (*vsync_ctrl) (int enable);
 	void *cursor_buf;
 	void *cursor_buf_phys;
 
@@ -185,7 +187,8 @@ struct msm_fb_data_type {
 struct dentry *msm_fb_get_debugfs_root(void);
 void msm_fb_debugfs_file_create(struct dentry *root, const char *name,
 				u32 *var);
-void msm_fb_set_backlight(struct msm_fb_data_type *mfd, __u32 bkl_lvl);
+void msm_fb_set_backlight(struct msm_fb_data_type *mfd, __u32 bkl_lvl,
+				u32 save);
 
 struct platform_device *msm_fb_add_device(struct platform_device *pdev);
 struct fb_info *msm_fb_get_writeback_fb(void);
@@ -198,6 +201,7 @@ int msm_fb_writeback_dequeue_buffer(struct fb_info *info,
 int msm_fb_writeback_stop(struct fb_info *info);
 int msm_fb_writeback_terminate(struct fb_info *info);
 int msm_fb_detect_client(const char *name);
+int calc_fb_offset(struct msm_fb_data_type *mfd, struct fb_info *fbi, int bpp);
 
 #ifdef CONFIG_FB_BACKLIGHT
 void msm_fb_config_backlight(struct msm_fb_data_type *mfd);

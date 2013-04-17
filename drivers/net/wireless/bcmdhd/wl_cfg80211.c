@@ -112,7 +112,6 @@ struct wl_netinfo_clean{
 struct wl_netinfo_clean wl_netinfo_clean_s;
 
 extern struct workqueue_struct *cfg80211_wq;
-
 #define MAC2STR(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
 #define MACSTR "%02x:%02x:%02x:%02x:%02x:%02x"
 //bcm's patch for p2p panic 
@@ -1303,7 +1302,7 @@ static void wl_scan_prep(struct wl_scan_params *params, struct cfg80211_scan_req
 
 			params->channel_list[i] = channel;
 			params->channel_list[i] &= WL_CHANSPEC_CHAN_MASK;
-			//params->channel_list[i] |= chanspec;
+			params->channel_list[i] |= chanspec;
 			WL_SCAN(("Chan : %d, Channel spec: %x \n",
 			channel, params->channel_list[i]));
 			params->channel_list[i] = htod16(params->channel_list[i]);
@@ -5866,7 +5865,6 @@ static void wl_cleanup_work(struct work_struct *work){
 	wl_dealloc_netinfo(wl_clean->wl, wl_clean->net);
 	
 }
-
 static s32
 wl_cfg80211_netdev_notifier_call(struct notifier_block * nb,
 	unsigned long state,

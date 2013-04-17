@@ -46,11 +46,28 @@ static int wdump, rdump;
 static struct wake_lock adsp_wake_lock;
 static inline void prevent_suspend(void)
 {
+       if (!wake_lock_active(&adsp_wake_lock))
+       {
 	wake_lock(&adsp_wake_lock);
+}
 }
 static inline void allow_suspend(void)
 {
+       if (wake_lock_active(&adsp_wake_lock))
+       {
 	wake_unlock(&adsp_wake_lock);
+}
+}
+
+void resume_prevent_suspend(void)
+{
+       prevent_suspend();
+       MM_INFO("chenjun:patch:resume_prevent_suspend\n");
+}
+void suspend_allow_suspend(void)
+{
+       allow_suspend();
+       MM_INFO("chenjun:patch:suspend_allow_suspend\n");
 }
 
 #include <linux/io.h>

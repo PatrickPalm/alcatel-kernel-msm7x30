@@ -91,7 +91,7 @@
 #include <mach/sdio_al.h>
 #include "smd_private.h"
 #include <linux/bma150.h>
-
+#include <linux/pn544.h>
 //fanxin add
 #include <linux/akm8975.h>
 #include <linux/tmd2771.h>
@@ -982,6 +982,24 @@ static int gyro_power(int on, int show)
 	
 	return rc;
 }
+
+/*NFC device pn544*/
+#ifdef CONFIG_PN544_NFC
+#define pn544_irq 46
+static struct pn544_i2c_platform_data pn544_pdata = {
+	.irq_gpio = 46,
+	.ven_gpio = 16,
+	.firm_gpio = 101,
+};
+
+static struct i2c_board_info pn544_board_info[] ={
+	{
+		I2C_BOARD_INFO("pn544", 0x28),
+		.irq = MSM_GPIO_TO_INT(pn544_irq),
+		.platform_data = &pn544_pdata,
+	},
+};
+#endif
 
 /*********
 bma250
@@ -3420,7 +3438,9 @@ static struct spi_board_info lcdc_toshiba_spi_board_info[] __initdata = {
 
 static struct msm_gpio qsd_spi_gpio_config_data[] = {
 	{ GPIO_CFG(45, 1, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_clk" },
+#ifndef CONFIG_PN544_NFC
 	{ GPIO_CFG(46, 1, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_cs0" },
+#endif	
 	{ GPIO_CFG(47, 1, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_8MA), "spi_mosi" },
 	{ GPIO_CFG(48, 1, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_miso" },
 };
@@ -3653,14 +3673,18 @@ static struct platform_device android_pmem_device = {
 #ifndef CONFIG_SPI_QSD
 static int lcdc_gpio_array_num[] = {
 				45, /* spi_clk */
+#ifndef CONFIG_PN544_NFC
 				46, /* spi_cs  */
+#endif
 				47, /* spi_mosi */
 				48, /* spi_miso */
 				};
 
 static struct msm_gpio lcdc_gpio_config_data[] = {
 	{ GPIO_CFG(45, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_clk" },
+#ifndef CONFIG_PN544_NFC
 	{ GPIO_CFG(46, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_cs0" },
+#endif
 	{ GPIO_CFG(47, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_mosi" },
 	{ GPIO_CFG(48, 0, GPIO_CFG_INPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_miso" },
 };
@@ -4622,7 +4646,9 @@ static struct msm_panel_common_pdata mdp_pdata = {
 
 static int lcd_panel_spi_gpio_num[] = {
 			45, /* spi_clk */
+#ifndef CONFIG_PN544_NFC
 			46, /* spi_cs  */
+#endif
 			47, /* spi_mosi */
 			48, /* spi_miso */
 		};
@@ -4643,7 +4669,9 @@ static struct msm_gpio lcd_panel_gpios[] = {
 	{ GPIO_CFG(25, 1, GPIO_CFG_OUTPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "lcdc_red2" },
 #ifndef CONFIG_SPI_QSD
 	{ GPIO_CFG(45, 0, GPIO_CFG_OUTPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_clk" },
+#ifndef CONFIG_PN544_NFC
 	{ GPIO_CFG(46, 0, GPIO_CFG_OUTPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_cs0" },
+#endif
 	{ GPIO_CFG(47, 0, GPIO_CFG_OUTPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_mosi" },
 	{ GPIO_CFG(48, 0, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_miso" },
 #endif
@@ -6068,8 +6096,11 @@ out:
 
 #define MBP_RESET_N \
 	GPIO_CFG(44, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_8MA)
+
+#ifndef CONFIG_PN544_NFC
 #define MBP_INT0 \
 	GPIO_CFG(46, 0, GPIO_CFG_INPUT, GPIO_CFG_PULL_UP, GPIO_CFG_8MA)
+#endif
 
 #define MBP_MODE_CTRL_0 \
 	GPIO_CFG(35, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA)
@@ -7422,6 +7453,13 @@ akm8975
 ************/
 	i2c_register_board_info(4 /* QUP ID */, akm8975_board_info,
                                  ARRAY_SIZE(akm8975_board_info));
+
+/*******PN544********/
+#ifdef CONFIG_PN544_NFC
+	i2c_register_board_info(8 , pn544_board_info,
+                                 ARRAY_SIZE(pn544_board_info));
+#endif
+
 	bt_power_init();
 #ifdef CONFIG_I2C_SSBI
 	msm_device_ssbi7.dev.platform_data = &msm_i2c_ssbi7_pdata;

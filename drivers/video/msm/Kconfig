@@ -87,6 +87,14 @@ config FB_MSM_MDP40
 	  Say Y here if this is msm7x30 variant platform.
 endchoice
 
+config FB_MSM_GPIO
+        tristate "LED CONFIG_FB_MSM_GPIO Support for different gpio"
+        default n
+        depends on FB_MSM_MIPI_DSI
+        help
+          LIUHAITAO ADD.		  
+
+
 config FB_MSM_EBI2
 	bool
 	default n

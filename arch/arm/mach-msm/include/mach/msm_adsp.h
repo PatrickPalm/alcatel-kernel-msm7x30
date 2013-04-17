@@ -45,7 +45,8 @@ int32_t get_adsp_resource(unsigned short client_idx,
 				void *cmd_buf, size_t cmd_size);
 int32_t put_adsp_resource(unsigned short client_idx,
 				void *cmd_buf, size_t cmd_size);
-
+void resume_prevent_suspend(void);
+void suspend_allow_suspend(void);
 /* Write is safe to call from interrupt context.
  */
 int msm_adsp_write(struct msm_adsp_module *module,
