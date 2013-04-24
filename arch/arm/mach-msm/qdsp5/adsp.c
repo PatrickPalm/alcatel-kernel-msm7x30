@@ -451,7 +451,8 @@ int __msm_adsp_write(struct msm_adsp_module *module, unsigned dsp_queue_addr,
 	while (((ctrl_word = readl(info->write_ctrl)) &
 		ADSP_RTOS_WRITE_CTRL_WORD_READY_M) !=
 		ADSP_RTOS_WRITE_CTRL_WORD_READY_V) {
-		if (cnt > 50) {
+		// if (cnt > 50) {
+		if (cnt > (50 * 4)) {
 			MM_ERR("timeout waiting for DSP write ready\n");
 			ret_status = -EIO;
 			goto fail;
@@ -488,7 +489,8 @@ int __msm_adsp_write(struct msm_adsp_module *module, unsigned dsp_queue_addr,
 	while ((readl(info->write_ctrl) &
 		ADSP_RTOS_WRITE_CTRL_WORD_MUTEX_M) ==
 		ADSP_RTOS_WRITE_CTRL_WORD_MUTEX_NAVAIL_V) {
-		if (cnt > 2500) {
+		// if (cnt > 2500) {
+		if (cnt > (2500 * 4)) {
 			MM_ERR("timeout waiting for adsp ack\n");
 			ret_status = -EIO;
 			goto fail;
@@ -1055,9 +1057,18 @@ int msm_adsp_enable(struct msm_adsp_module *module)
 			break;
 		module->state = ADSP_STATE_ENABLING;
 		mutex_unlock(&module->lock);
+#if 0
+/*
+W/AudioTrack( 1898): obtainBuffer timed out (is the CPU pegged?)...
+*/
 		rc = wait_event_timeout(module->state_wait,
 					module->state != ADSP_STATE_ENABLING,
 					1 * HZ);
+#else
+		rc = wait_event_timeout(module->state_wait,
+					module->state != ADSP_STATE_ENABLING,
+					5 * HZ);
+#endif
 		mutex_lock(&module->lock);
 		if (module->state == ADSP_STATE_ENABLED) {
 			rc = 0;
