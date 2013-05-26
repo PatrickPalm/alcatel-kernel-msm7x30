@@ -2361,7 +2361,7 @@ config FB_MSM_TRIPLE_BUFFER
 
 choice
 	prompt "MDP HW version"
-	default FB_MSM_MDP22
+	default FB_MSM_MDP40
 
 config FB_MSM_MDP22
 	bool "MDP HW ver2.2"

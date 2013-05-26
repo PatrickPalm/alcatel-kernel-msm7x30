@@ -40,6 +40,10 @@
 #include "sd_ops.h"
 #include "sdio_ops.h"
 
+#ifdef CONFIG_BCM4329
+#include "../host/msm_sdcc.h"
+#endif
+
 static struct workqueue_struct *workqueue;
 
 /*
@@ -168,7 +172,6 @@ mmc_start_request(struct mmc_host *host, struct mmc_request *mrq)
 	unsigned int i, sz;
 	struct scatterlist *sg;
 #endif
-
 
 	pr_debug("%s: starting CMD%u arg %08x flags %08x\n",
 		 mmc_hostname(host), mrq->cmd->opcode,
@@ -1220,8 +1223,7 @@ void mmc_attach_bus(struct mmc_host *host, const struct mmc_bus_ops *ops)
 }
 
 /*
- * Remove the current bus handler from a host. Assumes that there are
- * no interesting cards left, so the bus is powered down.
+ * Remove the current bus handler from a host.
  */
 void mmc_detach_bus(struct mmc_host *host)
 {
@@ -1805,6 +1807,7 @@ void mmc_stop_host(struct mmc_host *host)
 
 		mmc_claim_host(host);
 		mmc_detach_bus(host);
+		mmc_power_off(host);
 		mmc_release_host(host);
 		mmc_bus_put(host);
 		return;
@@ -1957,11 +1960,15 @@ int mmc_suspend_host(struct mmc_host *host)
 				err = 0;
 			}
 		}
+		flush_delayed_work(&host->disable);
 	}
 	mmc_bus_put(host);
 
 	if (!err && !mmc_card_keep_power(host))
 		mmc_power_off(host);
+
+	if (host->card && host->card->type == MMC_TYPE_SD)
+		mdelay(50);
 
 	return err;
 }
@@ -2027,6 +2034,9 @@ int mmc_pm_notify(struct notifier_block *notify_block,
 {
 	struct mmc_host *host = container_of(
 		notify_block, struct mmc_host, pm_notify);
+#ifdef CONFIG_BCM4329
+	struct msmsdcc_host *msmhost = mmc_priv(host);
+#endif
 	unsigned long flags;
 
 
@@ -2053,6 +2063,7 @@ int mmc_pm_notify(struct notifier_block *notify_block,
 			host->bus_ops->remove(host);
 
 		mmc_detach_bus(host);
+		mmc_power_off(host);
 		mmc_release_host(host);
 		host->pm_flags = 0;
 		break;
@@ -2068,6 +2079,13 @@ int mmc_pm_notify(struct notifier_block *notify_block,
 		}
 		host->rescan_disable = 0;
 		spin_unlock_irqrestore(&host->lock, flags);
+
+#ifdef CONFIG_BCM4329
+		if (host->card && msmhost && msmhost->pdev_id == 1)
+			printk(KERN_INFO"%s(): WLAN SKIP DETECT CHANGE\n",
+					__func__);
+		else
+#endif
 		mmc_detect_change(host, 0);
 
 	}

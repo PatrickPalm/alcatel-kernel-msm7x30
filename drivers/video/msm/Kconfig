@@ -47,7 +47,7 @@ config MDDI_HIMAX_24BIT_WORKROUND
 
 choice
 	prompt "MDP HW version"
-	default FB_MSM_MDP22
+	default FB_MSM_MDP40
 
 config FB_MSM_MDP22
 	bool "MDP HW ver2.2"
@@ -86,14 +86,6 @@ config FB_MSM_MDP40
 	  Support for MSM MDP HW revision 4.0
 	  Say Y here if this is msm7x30 variant platform.
 endchoice
-
-config FB_MSM_GPIO
-        tristate "LED CONFIG_FB_MSM_GPIO Support for different gpio"
-        default n
-        depends on FB_MSM_MIPI_DSI
-        help
-          LIUHAITAO ADD.		  
-
 
 config FB_MSM_EBI2
 	bool
@@ -317,6 +309,15 @@ config FB_MSM_MIPI_SIMULATOR_VIDEO
 	bool
 	select FB_MSM_MIPI_DSI_SIMULATOR
 	default n
+
+config FB_MSM_NO_MDP_PIPE_CTRL
+	depends on FB_MSM_OVERLAY
+	bool "Do not use mdp_pipe_ctrl"
+	---help---
+	  Saying 'Y' here obsoletes the mdp_pipe_ctrl function,
+	  which was used to control mdp-related clocks. MDP4 vsync-driven
+	  screen updates will use a different clock control mechanism if
+	  this is selected.
 
 config FB_MSM_OVERLAY0_WRITEBACK
 	depends on FB_MSM_OVERLAY
@@ -747,7 +748,7 @@ endchoice
 
 choice
 	prompt "Default framebuffer color depth"
-	depends on FB_MSM_MDP40 || FB_MSM_MDP31
+	depends on FB_MSM_MDP40 || FB_MSM_MDP31 || FB_MSM_MDP303
 	default FB_MSM_DEFAULT_DEPTH_RGBA8888
 
 config FB_MSM_DEFAULT_DEPTH_RGB565

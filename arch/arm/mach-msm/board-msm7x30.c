@@ -91,7 +91,7 @@
 #include <mach/sdio_al.h>
 #include "smd_private.h"
 #include <linux/bma150.h>
-#include <linux/pn544.h>
+
 //fanxin add
 #include <linux/akm8975.h>
 #include <linux/tmd2771.h>
@@ -101,16 +101,35 @@
 #include "board-msm7x30-regulator.h"
 #include "pm.h"
 
+#ifdef CONFIG_MSM_MEMORY_HIGH               // 360 MB of free RAM
+#define MSM_PMEM_SF_SIZE          0x1200000 //    18.874.368 Bytes =  18 MB
+#define MSM_PMEM_ADSP_SIZE        0x2800000 //    41.943.040 Bytes =  40 MB
+#define MSM_PMEM_AUDIO_SIZE       0x0100000 //     1.048.576 Bytes =   1 MB
+#elif defined(CONFIG_MSM_MEMORY_VERY_HIGH)  // 370 MB of free RAM
+#define MSM_PMEM_SF_SIZE          0x0800000 //     8.388.608 Bytes =   8 MB
+#define MSM_PMEM_ADSP_SIZE        0x2800000 //    41.943.040 Bytes =  40 MB
+#define MSM_PMEM_AUDIO_SIZE       0x0100000 //     1.048.576 Bytes =   1 MB
+#else
 #define MSM_PMEM_SF_SIZE	0x2400000
+#define MSM_PMEM_ADSP_SIZE      0x2400000
+#define MSM_PMEM_AUDIO_SIZE     0x200000
+#endif
+
+#define MSM_FLUID_PMEM_ADSP_SIZE	0x2800000
+#define PMEM_KERNEL_EBI0_SIZE   0x600000
+
 #ifdef CONFIG_FB_MSM_TRIPLE_BUFFER
 #define MSM_FB_SIZE            0x780000
 #else
 #define MSM_FB_SIZE            0x500000
 #endif
-#define MSM_PMEM_ADSP_SIZE      0x2400000
-#define MSM_FLUID_PMEM_ADSP_SIZE	0x2800000
-#define PMEM_KERNEL_EBI0_SIZE   0x600000
-#define MSM_PMEM_AUDIO_SIZE     0x200000
+
+#ifdef CONFIG_ION_MSM
+static struct platform_device ion_dev;
+#define MSM_ION_AUDIO_SIZE	(MSM_PMEM_AUDIO_SIZE + PMEM_KERNEL_EBI0_SIZE)
+#define MSM_ION_SF_SIZE		MSM_PMEM_SF_SIZE
+#define MSM_ION_HEAP_NUM	4
+#endif
 
 #define PMIC_GPIO_INT		27
 #define PMIC_VREG_WLAN_LEVEL	2900
@@ -982,24 +1001,6 @@ static int gyro_power(int on, int show)
 	
 	return rc;
 }
-
-/*NFC device pn544*/
-#ifdef CONFIG_PN544_NFC
-#define pn544_irq 46
-static struct pn544_i2c_platform_data pn544_pdata = {
-	.irq_gpio = 46,
-	.ven_gpio = 16,
-	.firm_gpio = 101,
-};
-
-static struct i2c_board_info pn544_board_info[] ={
-	{
-		I2C_BOARD_INFO("pn544", 0x28),
-		.irq = MSM_GPIO_TO_INT(pn544_irq),
-		.platform_data = &pn544_pdata,
-	},
-};
-#endif
 
 /*********
 bma250
@@ -3438,9 +3439,7 @@ static struct spi_board_info lcdc_toshiba_spi_board_info[] __initdata = {
 
 static struct msm_gpio qsd_spi_gpio_config_data[] = {
 	{ GPIO_CFG(45, 1, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_clk" },
-#ifndef CONFIG_PN544_NFC
 	{ GPIO_CFG(46, 1, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_cs0" },
-#endif	
 	{ GPIO_CFG(47, 1, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_8MA), "spi_mosi" },
 	{ GPIO_CFG(48, 1, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_miso" },
 };
@@ -3673,18 +3672,14 @@ static struct platform_device android_pmem_device = {
 #ifndef CONFIG_SPI_QSD
 static int lcdc_gpio_array_num[] = {
 				45, /* spi_clk */
-#ifndef CONFIG_PN544_NFC
 				46, /* spi_cs  */
-#endif
 				47, /* spi_mosi */
 				48, /* spi_miso */
 				};
 
 static struct msm_gpio lcdc_gpio_config_data[] = {
 	{ GPIO_CFG(45, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_clk" },
-#ifndef CONFIG_PN544_NFC
 	{ GPIO_CFG(46, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_cs0" },
-#endif
 	{ GPIO_CFG(47, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_mosi" },
 	{ GPIO_CFG(48, 0, GPIO_CFG_INPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_miso" },
 };
@@ -4096,6 +4091,14 @@ static struct resource msm_fb_resources[] = {
 	}
 };
 
+#ifdef CONFIG_MSM_V4L2_VIDEO_OVERLAY_DEVICE
+static struct resource msm_v4l2_video_overlay_resources[] = {
+	{
+	   .flags = IORESOURCE_DMA,
+	}
+};
+#endif
+
 static int msm_fb_detect_panel(const char *name)
 {
 	if (machine_is_msm7x30_fluid()) {
@@ -4128,6 +4131,16 @@ static struct platform_device msm_fb_device = {
 		.platform_data = &msm_fb_pdata,
 	}
 };
+
+#ifdef CONFIG_MSM_V4L2_VIDEO_OVERLAY_DEVICE
+
+static struct platform_device msm_v4l2_video_overlay_device = {
+	.name   = "msm_v4l2_overlay_pd",
+	.id     = 0,
+	.num_resources  = ARRAY_SIZE(msm_v4l2_video_overlay_resources),
+	.resource       = msm_v4l2_video_overlay_resources,
+};
+#endif
 
 static struct platform_device msm_migrate_pages_device = {
 	.name   = "msm_migrate_pages",
@@ -4638,17 +4651,13 @@ int mdp_core_clk_rate_table[] = {
 static struct msm_panel_common_pdata mdp_pdata = {
 	.hw_revision_addr = 0xac001270,
 	.gpio = 30,
-	.mdp_core_clk_rate = 122880000,
-	.mdp_core_clk_table = mdp_core_clk_rate_table,
-	.num_mdp_clk = ARRAY_SIZE(mdp_core_clk_rate_table),
+	.mdp_max_clk = 192000000,
 	.mdp_rev = MDP_REV_40,
 };
 
 static int lcd_panel_spi_gpio_num[] = {
 			45, /* spi_clk */
-#ifndef CONFIG_PN544_NFC
 			46, /* spi_cs  */
-#endif
 			47, /* spi_mosi */
 			48, /* spi_miso */
 		};
@@ -4669,9 +4678,7 @@ static struct msm_gpio lcd_panel_gpios[] = {
 	{ GPIO_CFG(25, 1, GPIO_CFG_OUTPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "lcdc_red2" },
 #ifndef CONFIG_SPI_QSD
 	{ GPIO_CFG(45, 0, GPIO_CFG_OUTPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_clk" },
-#ifndef CONFIG_PN544_NFC
 	{ GPIO_CFG(46, 0, GPIO_CFG_OUTPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_cs0" },
-#endif
 	{ GPIO_CFG(47, 0, GPIO_CFG_OUTPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_mosi" },
 	{ GPIO_CFG(48, 0, GPIO_CFG_INPUT,  GPIO_CFG_NO_PULL, GPIO_CFG_2MA), "spi_miso" },
 #endif
@@ -5647,6 +5654,9 @@ static struct platform_device *devices[] __initdata = {
 #endif
 	&android_pmem_device,
 	&msm_fb_device,
+#ifdef CONFIG_MSM_V4L2_VIDEO_OVERLAY_DEVICE
+	&msm_v4l2_video_overlay_device,
+#endif
 	&msm_migrate_pages_device,
 	&mddi_toshiba_device,
 	&mddi_ry002z_device,
@@ -5739,7 +5749,10 @@ static struct platform_device *devices[] __initdata = {
 	&msm_batt_device,
 	&msm_adc_device,
 	&msm_ebi0_thermal,
-	&msm_ebi1_thermal
+	&msm_ebi1_thermal,
+#ifdef CONFIG_ION_MSM
+	&ion_dev,
+#endif
 };
 
 static struct msm_gpio msm_i2c_gpios_hw[] = {
@@ -6096,11 +6109,8 @@ out:
 
 #define MBP_RESET_N \
 	GPIO_CFG(44, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_8MA)
-
-#ifndef CONFIG_PN544_NFC
 #define MBP_INT0 \
 	GPIO_CFG(46, 0, GPIO_CFG_INPUT, GPIO_CFG_PULL_UP, GPIO_CFG_8MA)
-#endif
 
 #define MBP_MODE_CTRL_0 \
 	GPIO_CFG(35, 0, GPIO_CFG_OUTPUT, GPIO_CFG_NO_PULL, GPIO_CFG_2MA)
@@ -7453,13 +7463,6 @@ akm8975
 ************/
 	i2c_register_board_info(4 /* QUP ID */, akm8975_board_info,
                                  ARRAY_SIZE(akm8975_board_info));
-
-/*******PN544********/
-#ifdef CONFIG_PN544_NFC
-	i2c_register_board_info(8 , pn544_board_info,
-                                 ARRAY_SIZE(pn544_board_info));
-#endif
-
 	bt_power_init();
 #ifdef CONFIG_I2C_SSBI
 	msm_device_ssbi7.dev.platform_data = &msm_i2c_ssbi7_pdata;
@@ -7551,6 +7554,65 @@ static int __init pmem_kernel_ebi0_size_setup(char *p)
 }
 early_param("pmem_kernel_ebi0_size", pmem_kernel_ebi0_size_setup);
 
+#ifdef CONFIG_ION_MSM
+#ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
+static struct ion_co_heap_pdata co_ion_pdata = {
+	.adjacent_mem_id = INVALID_HEAP_ID,
+	.align = PAGE_SIZE,
+};
+#endif
+
+/**
+ * These heaps are listed in the order they will be allocated.
+ * Don't swap the order unless you know what you are doing!
+ */
+static struct ion_platform_data ion_pdata = {
+	.nr = MSM_ION_HEAP_NUM,
+	.heaps = {
+		{
+			.id	= ION_SYSTEM_HEAP_ID,
+			.type	= ION_HEAP_TYPE_SYSTEM,
+			.name	= ION_VMALLOC_HEAP_NAME,
+		},
+#ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
+		/* PMEM_ADSP = CAMERA */
+		{
+			.id	= ION_CAMERA_HEAP_ID,
+			.type	= ION_HEAP_TYPE_CARVEOUT,
+			.name	= ION_CAMERA_HEAP_NAME,
+			.memory_type = ION_EBI_TYPE,
+			.has_outer_cache = 1,
+			.extra_data = (void *)&co_ion_pdata,
+		},
+		/* PMEM_AUDIO */
+		{
+			.id	= ION_AUDIO_HEAP_ID,
+			.type	= ION_HEAP_TYPE_CARVEOUT,
+			.name	= ION_AUDIO_HEAP_NAME,
+			.memory_type = ION_EBI_TYPE,
+			.has_outer_cache = 1,
+			.extra_data = (void *)&co_ion_pdata,
+		},
+		/* PMEM_MDP = SF */
+		{
+			.id	= ION_SF_HEAP_ID,
+			.type	= ION_HEAP_TYPE_CARVEOUT,
+			.name	= ION_SF_HEAP_NAME,
+			.memory_type = ION_EBI_TYPE,
+			.has_outer_cache = 1,
+			.extra_data = (void *)&co_ion_pdata,
+		},
+#endif
+	}
+};
+
+static struct platform_device ion_dev = {
+	.name = "ion-msm",
+	.id = 1,
+	.dev = { .platform_data = &ion_pdata },
+};
+#endif
+
 static struct memtype_reserve msm7x30_reserve_table[] __initdata = {
 	[MEMTYPE_SMI] = {
 	},
@@ -7562,40 +7624,79 @@ static struct memtype_reserve msm7x30_reserve_table[] __initdata = {
 	},
 };
 
-static void __init size_pmem_devices(void)
-{
-#ifdef CONFIG_ANDROID_PMEM
-	unsigned long size;
+unsigned long size;
+unsigned long msm_ion_camera_size;
 
+static void fix_sizes(void)
+{
 	if machine_is_msm7x30_fluid()
 		size = fluid_pmem_adsp_size;
 	else
 		size = pmem_adsp_size;
+
+#ifdef CONFIG_ION_MSM
+	msm_ion_camera_size = size;
+#endif
+}
+
+static void __init size_pmem_devices(void)
+{
+#ifdef CONFIG_ANDROID_PMEM
+#ifndef CONFIG_MSM_MULTIMEDIA_USE_ION
+
 	android_pmem_adsp_pdata.size = size;
 	android_pmem_audio_pdata.size = pmem_audio_size;
 	android_pmem_pdata.size = pmem_sf_size;
 #endif
+#endif
 }
 
+#ifdef CONFIG_ANDROID_PMEM
+#ifndef CONFIG_MSM_MULTIMEDIA_USE_ION
 static void __init reserve_memory_for(struct android_pmem_platform_data *p)
 {
 	msm7x30_reserve_table[p->memory_type].size += p->size;
 }
+#endif
+#endif
 
 static void __init reserve_pmem_memory(void)
 {
 #ifdef CONFIG_ANDROID_PMEM
+#ifndef CONFIG_MSM_MULTIMEDIA_USE_ION
 	reserve_memory_for(&android_pmem_adsp_pdata);
 	reserve_memory_for(&android_pmem_audio_pdata);
 	reserve_memory_for(&android_pmem_pdata);
 	msm7x30_reserve_table[MEMTYPE_EBI0].size += pmem_kernel_ebi0_size;
 #endif
+#endif
+}
+
+static void __init size_ion_devices(void)
+{
+#ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
+	ion_pdata.heaps[1].size = msm_ion_camera_size;
+	ion_pdata.heaps[2].size = MSM_ION_AUDIO_SIZE;
+	ion_pdata.heaps[3].size = MSM_ION_SF_SIZE;
+#endif
+}
+
+static void __init reserve_ion_memory(void)
+{
+#if defined(CONFIG_ION_MSM) && defined(CONFIG_MSM_MULTIMEDIA_USE_ION)
+	msm7x30_reserve_table[MEMTYPE_EBI0].size += msm_ion_camera_size;
+	msm7x30_reserve_table[MEMTYPE_EBI0].size += MSM_ION_AUDIO_SIZE;
+	msm7x30_reserve_table[MEMTYPE_EBI0].size += MSM_ION_SF_SIZE;
+#endif
 }
 
 static void __init msm7x30_calculate_reserve_sizes(void)
 {
+	fix_sizes();
 	size_pmem_devices();
 	reserve_pmem_memory();
+	size_ion_devices();
+	reserve_ion_memory();
 }
 
 static int msm7x30_paddr_to_memtype(unsigned int paddr)
@@ -7630,6 +7731,16 @@ static void __init msm7x30_allocate_memory_regions(void)
 	msm_fb_resources[0].end = msm_fb_resources[0].start + size - 1;
 	pr_info("allocating %lu bytes at %p (%lx physical) for fb\n",
 		size, addr, __pa(addr));
+
+#ifdef CONFIG_MSM_V4L2_VIDEO_OVERLAY_DEVICE
+	size = MSM_V4L2_VIDEO_OVERLAY_BUF_SIZE;
+	addr = alloc_bootmem_align(size, 0x1000);
+	msm_v4l2_video_overlay_resources[0].start = __pa(addr);
+	msm_v4l2_video_overlay_resources[0].end =
+		msm_v4l2_video_overlay_resources[0].start + size - 1;
+	pr_debug("allocating %lu bytes at %p (%lx physical) for v4l2\n",
+		size, addr, __pa(addr));
+#endif
 }
 
 static void __init msm7x30_map_io(void)

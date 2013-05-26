@@ -1,0 +1,501 @@
+Binär fil .git/objects/pack/pack-5c546787584fbc475341d575e92b3697643479d4.pack matchar
+Binär fil .git/index matchar
+drivers/sensors_ariesve/yas_mag_kernel_driver.c:#if defined (CONFIG_MACH_ARIESVE)    //AriesVE
+drivers/sensors_ariesve/yas_acc_driver.c:#if defined (CONFIG_MACH_ARIESVE)
+drivers/sensors_ariesve/Makefile:obj-$(CONFIG_SENSORS_BMA023_ACCEL)	+= yas_acc_kernel_driver_ariesve.o
+drivers/sensors_ariesve/Makefile:obj-$(CONFIG_OPTICAL_GP2A)		+= gp2a_proximity_ariesve.o gp2a_rpc.o gp2a_light.o
+drivers/sensors_ariesve/gp2a_light.c:#ifdef CONFIG_MACH_ARIESVE
+drivers/sensors_ariesve/gp2a_light.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/sensors_ariesve/gp2a_rpc.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/video/msm/mdp4_overlay_lcdc.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_APACHE)
+drivers/video/msm/msm_fb.c:#define INIT_IMAGE_FILE "/ARIESVE.rle"
+drivers/misc/sec_jack.c:#if (defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE))
+drivers/net/wireless/bcmdhd/Makefile:else ifeq ($(CONFIG_MACH_ARIESVE),y)
+drivers/Makefile:obj-$(CONFIG_MACH_ARIESVE)	+= sensors_ariesve/
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/input.c:#ifndef CONFIG_MACH_ARIESVE
+drivers/media/video/msm/Makefile:ifeq ($(CONFIG_MACH_ARIESVE),y)
+drivers/media/video/msm/msm_vfe31.c:#ifdef CONFIG_MACH_ARIESVE
+drivers/media/video/msm/msm_camera.c:#if defined (CONFIG_MACH_ARIESVE)
+drivers/media/video/msm/msm_camera.c:#if defined (CONFIG_MACH_ARIESVE)
+drivers/media/video/msm/msm_camera.c:#if defined (CONFIG_MACH_ARIESVE)
+drivers/sensors_ancora/gp2a_rpc.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/yda165.c:		#elif defined(CONFIG_MACH_ARIESVE)
+drivers/i2c/chips/yda165.c:		#elif defined(CONFIG_MACH_ARIESVE)
+drivers/i2c/chips/yda165.c:		#elif defined(CONFIG_MACH_ARIESVE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:	struct ariesve_parameter param_data;
+drivers/i2c/chips/fsa9480.c:	memset(&param_data,0,sizeof(struct ariesve_parameter));
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)	
+drivers/power/Makefile:obj-$(CONFIG_BATTERY_ARIESVE)	+= ariesve_battery.o
+drivers/power/ariesve_battery.c:static struct device_attribute ariesve_battery_attrs[] = {
+drivers/power/ariesve_battery.c:	for (i = 0; i < ARRAY_SIZE(ariesve_battery_attrs); i++)
+drivers/power/ariesve_battery.c:		rc = device_create_file(dev, &ariesve_battery_attrs[i]);
+drivers/power/ariesve_battery.c:		device_remove_file(dev, &ariesve_battery_attrs[i]);
+drivers/power/ariesve_battery.c:	for (i = 0; i < ARRAY_SIZE(ariesve_battery_attrs); i++)
+drivers/power/ariesve_battery.c:		device_remove_file(dev, &ariesve_battery_attrs[i]);
+drivers/power/ariesve_battery.c:	const ptrdiff_t offset = attr - ariesve_battery_attrs;
+drivers/power/ariesve_battery.c:	const ptrdiff_t offset = attr - ariesve_battery_attrs;
+drivers/power/ariesve_battery.c:		   .name = "ariesve-battery",
+drivers/power/ariesve_battery.c:MODULE_ALIAS("platform:ariesve_battery");
+drivers/power/Kconfig:config BATTERY_ARIESVE
+drivers/power/Kconfig:	tristate "Ariesve battery"
+drivers/power/Kconfig:	depends on MACH_ARIESVE
+drivers/power/Kconfig:	  Say Y to enable support for the battery in Samsung ARIESVE.
+drivers/power/fuelgauge_max17043.c:#ifdef CONFIG_MACH_ARIESVE
+drivers/power/fuelgauge_max17043.c:#ifdef CONFIG_MACH_ARIESVE
+drivers/power/fuelgauge_max17043.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_APACHE)
+drivers/Kconfig:if MACH_ARIESVE
+drivers/Kconfig:source "drivers/sensors_ariesve/Kconfig"
+init/main.c:		printk("AriesVE charging_boot %d\n",charging_boot);
+init/main.c:		printk("AriesVE H/W revision : 0x0%d\n",board_hw_revision);
+arch/arm/configs/ancora_defconfig:# CONFIG_MACH_ARIESVE is not set
+arch/arm/configs/ariesve_defconfig:CONFIG_MACH_ARIESVE=y
+arch/arm/configs/ariesve_defconfig:CONFIG_BATTERY_ARIESVE=y
+arch/arm/configs/ancora_tmo_defconfig:# CONFIG_MACH_ARIESVE is not set
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:# CONFIG_MACH_ARIESVE is not set
+arch/arm/tools/mach-types:ariesve			MACH_ARIESVE		ARIESVE			2
+arch/arm/mach-msm/board-ariesve.c:static const unsigned int ariesve_keymap[] = {
+arch/arm/mach-msm/board-ariesve.c:static struct matrix_keymap_data ariesve_keymap_data = {
+arch/arm/mach-msm/board-ariesve.c:	.keymap_size	= ARRAY_SIZE(ariesve_keymap),
+arch/arm/mach-msm/board-ariesve.c:	.keymap		= ariesve_keymap,
+arch/arm/mach-msm/board-ariesve.c:static struct pm8xxx_keypad_platform_data ariesve_keypad_data = {
+arch/arm/mach-msm/board-ariesve.c:	.input_name		= "ariesve_keypad",
+arch/arm/mach-msm/board-ariesve.c:	.input_phys_device	= "ariesve_keypad/input0",
+arch/arm/mach-msm/board-ariesve.c:	.keymap_data            = &ariesve_keymap_data,
+arch/arm/mach-msm/board-ariesve.c:		pm8058_7x30_data.keypad_pdata = &ariesve_keypad_data;
+arch/arm/mach-msm/board-ariesve.c:static struct platform_device ariesve_batt_device = {
+arch/arm/mach-msm/board-ariesve.c:	.name 		    = "ariesve-battery",
+arch/arm/mach-msm/board-ariesve.c:static void ariesve_switch_init(void)
+arch/arm/mach-msm/board-ariesve.c:	&ariesve_batt_device,
+arch/arm/mach-msm/board-ariesve.c:	ariesve_switch_init();
+arch/arm/mach-msm/board-ariesve.c:MACHINE_START(ARIESVE, "GT-I9001 Board")
+arch/arm/mach-msm/clock-7x30.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/clock-7x30.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/clock-7x30.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/clock-pcom.h:#ifndef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/Makefile:obj-$(CONFIG_MACH_ARIESVE) += board-ariesve.o board-ariesve-regulator.o devices-msm7x30.o
+arch/arm/mach-msm/samsung_vibrator.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/samsung_vibrator.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/samsung_vibrator.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/samsung_vibrator.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ARIESVE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#include <mach/qdsp5v2/marimba_profile_ariesve.h>
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:static struct platform_device *snd_devices_ariesve[] __initdata = {
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:   		platform_add_devices(snd_devices_ariesve,
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:		ARRAY_SIZE(snd_devices_ariesve));
+arch/arm/mach-msm/include/mach/parameters.h:#if (defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE))
+arch/arm/mach-msm/include/mach/parameters.h:struct ariesve_parameter {	unsigned int usb_sel;	unsigned int uart_sel;	unsigned int usb_mode;};
+arch/arm/mach-msm/include/mach/parameters.h:extern void msm_read_param(struct ariesve_parameter *param_data);extern void msm_write_param(struct ariesve_parameter *param_data);
+arch/arm/mach-msm/include/mach/samsung_vibe.h:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+arch/arm/mach-msm/smd_rpcrouter.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/smd_rpcrouter.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/smd_rpcrouter.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/clock-pcom.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/clock-pcom.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/clock-pcom.c:#ifdef CONFIG_MACH_ARIESVE
+arch/arm/mach-msm/Kconfig:config MACH_ARIESVE
+arch/arm/mach-msm/Kconfig:	bool "ARIESVE"
+arch/arm/mach-msm/Kconfig:	depends on MACH_ARIESVE || MACH_ANCORA  || MACH_GODART || MACH_ANCORA_TMO || MACH_APACHE
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifdef CONFIG_MACH_ARIESVE      
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+include/media/msm_camera.h:#ifndef CONFIG_MACH_ARIESVE
+Binär fil .git/objects/pack/pack-5c546787584fbc475341d575e92b3697643479d4.pack matchar
+Binär fil .git/index matchar
+drivers/sensors_ariesve/yas_acc_driver.c:#elif defined (CONFIG_MACH_ANCORA)
+drivers/sensors_ariesve/yas_acc_driver.c:#include "yas_acc_driver-bma222.c"            // Ancora
+drivers/sensors_ariesve/yas_acc_driver.c:#elif defined (CONFIG_MACH_ANCORA_TMO)
+drivers/sensors_ariesve/yas_acc_driver.c:#include "yas_acc_driver-bma222.c"            // Ancora
+drivers/sensors_ariesve/gp2a_light.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/sensors_ariesve/gp2a_rpc.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/video/msm/mdp_dma_lcdc.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)
+drivers/video/msm/mdp_dma_lcdc.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)
+drivers/video/msm/mdp4_overlay.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)
+drivers/video/msm/mdp4_overlay.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)
+drivers/video/msm/mdp4_overlay_lcdc.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)
+drivers/video/msm/mdp4_overlay_lcdc.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)
+drivers/video/msm/Makefile:obj-$(CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA) += lcdc_samsung_ancora.o
+drivers/video/msm/Kconfig:config FB_MSM_LCDC_SAMSUNG_ANCORA
+drivers/video/msm/Kconfig:config FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL
+drivers/video/msm/Kconfig:	bool "LCDC SAMSUNG_ANCORA Panel"
+drivers/video/msm/Kconfig:	select FB_MSM_LCDC_SAMSUNG_ANCORA
+drivers/video/msm/Kconfig:	  Support for LCDC SAMSUNG ANCORA panel
+drivers/video/msm/lcdc_samsung_ancora.c:#include "lcdc_samsung_ancora.h"
+drivers/video/msm/lcdc_samsung_ancora.c:#if defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_ANCORA)
+drivers/video/msm/lcdc_samsung_ancora.c:#ifdef CONFIG_MACH_ANCORA
+drivers/video/msm/lcdc_samsung_ancora.c:	.driver.name	= "lcdc_samsung_ancora",
+drivers/video/msm/lcdc_samsung_ancora.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/video/msm/lcdc_samsung_ancora.c:	if (msm_fb_detect_client("lcdc_samsung_ancora")) {
+drivers/misc/sec_jack.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)// [HSS] Fix Ancora HW Issue      
+drivers/misc/sec_jack.c:#if (defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE))
+drivers/net/wireless/bcmdhd/Makefile:ifeq ($(CONFIG_MACH_ANCORA),y)
+drivers/net/wireless/bcmdhd/Makefile:else ifeq ($(CONFIG_MACH_ANCORA_TMO),y)
+drivers/Makefile:obj-$(CONFIG_MACH_ANCORA)	+= sensors_ancora/
+drivers/Makefile:obj-$(CONFIG_MACH_ANCORA_TMO)	+= sensors_ancora/
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/qt602240_ts.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+drivers/input/touchscreen/Makefile:obj-$(CONFIG_TOUCHSCREEN_MELFAS_MCS8000)	+= ancora/
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA) //#if !defined(CONFIG_MACH_ANCORA_TMO)  
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA) //#if !defined(CONFIG_MACH_ANCORA_TMO)  
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA)    
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/melfas_mcs8000.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/mcs8000_download.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/mcs8000_download.c:#include "ANCORA_TMO_FW_R04_V06.c"
+drivers/input/touchscreen/ancora/mcs8000_download.c:#include "ANCORA_TMO_FW_R06_V13.c"
+drivers/input/touchscreen/ancora/mcs8000_download.c:#include "ANCORA_FW_R03_V14.c" 
+drivers/input/touchscreen/ancora/mcs8000_download.c:#include "ANCORA_FW_R50_V15.c"
+drivers/input/touchscreen/ancora/mcs8000_download.c:#if defined(CONFIG_MACH_ANCORA)
+drivers/input/touchscreen/ancora/mcs8000_download.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/input/touchscreen/ancora/mcs8000_download.c:#if defined(CONFIG_MACH_ANCORA)   
+drivers/input/touchscreen/Kconfig:source "drivers/input/touchscreen/ancora/Kconfig"
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:	input_set_capability(kp->input, EV_KEY, KEY_HOME); // for ancora
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/input/keyboard/pmic8xxx-keypad.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/cpufreq/cpufreq_ondemand.c:#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/media/video/msm/s5k5ccaf.c:// ANCORA USA TMO GPIO Setting
+drivers/media/video/msm/s5k5ccaf.c:  PCAM_DEBUG("<=PCAM=> [ANCORA+] CURRENT SENSOR ID => id 0x%x \n", id);
+drivers/media/video/msm/s5k5ccaf.c:  PCAM_DEBUG("ANCORA REV 0.%d", (board_hw_revision == 0x03)? 0 : 1);
+drivers/media/video/msm/s5k4ecgx.c:#if defined(CONFIG_MACH_ANCORA)
+drivers/media/video/msm/s5k4ecgx.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_APACHE)
+drivers/media/video/msm/s5k4ecgx.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_APACHE)
+drivers/media/video/msm/s5k4ecgx.c:#if defined(CONFIG_MACH_ANCORA)
+drivers/media/video/msm/s5k4ecgx.c:#if defined(CONFIG_MACH_ANCORA)
+drivers/media/video/msm/s5k4ecgx.c:#if defined(CONFIG_MACH_ANCORA)
+drivers/media/video/msm/s5k4ecgx.c:#ifdef CONFIG_MACH_ANCORA
+drivers/media/video/msm/s5k4ecgx.c:#if defined(CONFIG_MACH_ANCORA)
+drivers/media/video/msm/s5k4ecgx.c:#elif defined(CONFIG_MACH_ANCORA)
+drivers/media/video/msm/ledflash.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)  || defined(CONFIG_MACH_APACHE)
+drivers/media/video/msm/msm_vfe31.c:#if !defined(CONFIG_MACH_ANCORA) && !defined(CONFIG_MACH_ANCORA_TMO) && !defined(CONFIG_MACH_APACHE)
+drivers/media/video/msm/msm_vfe31.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/media/video/msm/msm_camera.c:#if defined (CONFIG_MACH_ANCORA)
+drivers/media/video/msm/msm_camera.c:#elif defined (CONFIG_MACH_ANCORA_TMO)
+drivers/media/video/msm/msm_camera.c:#elif defined (CONFIG_MACH_ANCORA)
+drivers/media/video/msm/msm_camera.c:#elif defined (CONFIG_MACH_ANCORA_TMO)
+drivers/sensors_ancora/gp2a_rpc.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:		#ifdef CONFIG_MACH_ANCORA_TMO
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/yda165.c:#ifdef CONFIG_ANCORA_AMP_HPATT
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_APACHE) || defined(CONFIG_MACH_ANCORA_TMO)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_APACHE) || defined(CONFIG_MACH_ANCORA_TMO)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+drivers/i2c/chips/fsa9480.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)	
+drivers/dpram/dpram.h:#if defined(CONFIG_MACH_ANCORA_TMO)
+drivers/power/ancora_tmo_battery.c:static struct device_attribute ancora_battery_attrs[] = {
+drivers/power/ancora_tmo_battery.c:	for (i = 0; i < ARRAY_SIZE(ancora_battery_attrs); i++)
+drivers/power/ancora_tmo_battery.c:		rc = device_create_file(dev, &ancora_battery_attrs[i]);
+drivers/power/ancora_tmo_battery.c:		device_remove_file(dev, &ancora_battery_attrs[i]);
+drivers/power/ancora_tmo_battery.c:	for (i = 0; i < ARRAY_SIZE(ancora_battery_attrs); i++)
+drivers/power/ancora_tmo_battery.c:		device_remove_file(dev, &ancora_battery_attrs[i]);
+drivers/power/ancora_tmo_battery.c:	const ptrdiff_t offset = attr - ancora_battery_attrs;
+drivers/power/ancora_tmo_battery.c:	const ptrdiff_t offset = attr - ancora_battery_attrs;
+drivers/power/ancora_tmo_battery.c:		   .name = "ancora-battery",
+drivers/power/ancora_tmo_battery.c:MODULE_ALIAS("platform:ancora_battery");
+drivers/power/Makefile:obj-$(CONFIG_BATTERY_ANCORA)	+= ancora_battery.o
+drivers/power/Makefile:obj-$(CONFIG_BATTERY_ANCORA_TMO)+= ancora_tmo_battery.o
+drivers/power/ancora_battery.c:static struct device_attribute ancora_battery_attrs[] = {
+drivers/power/ancora_battery.c:	for (i = 0; i < ARRAY_SIZE(ancora_battery_attrs); i++)
+drivers/power/ancora_battery.c:		rc = device_create_file(dev, &ancora_battery_attrs[i]);
+drivers/power/ancora_battery.c:		device_remove_file(dev, &ancora_battery_attrs[i]);
+drivers/power/ancora_battery.c:	for (i = 0; i < ARRAY_SIZE(ancora_battery_attrs); i++)
+drivers/power/ancora_battery.c:		device_remove_file(dev, &ancora_battery_attrs[i]);
+drivers/power/ancora_battery.c:	const ptrdiff_t offset = attr - ancora_battery_attrs;
+drivers/power/ancora_battery.c:	const ptrdiff_t offset = attr - ancora_battery_attrs;
+drivers/power/ancora_battery.c:		   .name = "ancora-battery",
+drivers/power/ancora_battery.c:MODULE_ALIAS("platform:ancora_battery");
+drivers/power/Kconfig:config BATTERY_ANCORA
+drivers/power/Kconfig:	tristate "Ancora battery"
+drivers/power/Kconfig:	depends on MACH_ANCORA
+drivers/power/Kconfig:	  Say Y to enable support for the battery in Samsung Ancora.
+drivers/power/Kconfig:config BATTERY_ANCORA_TMO
+drivers/power/Kconfig:	tristate "Ancora TMO battery"
+drivers/power/Kconfig:	depends on MACH_ANCORA_TMO
+drivers/power/Kconfig:	  Say Y to enable support for the battery in Samsung Ancora.
+drivers/power/smb328a_charger.c:#ifdef CONFIG_MACH_ANCORA
+drivers/power/smb328a_charger.c:#ifdef CONFIG_MACH_ANCORA
+drivers/power/fuelgauge_max17043.c:	/*Adjusted SOC(Ancora)
+drivers/Kconfig:if MACH_ANCORA
+drivers/Kconfig:source "drivers/sensors_ancora/Kconfig"
+drivers/Kconfig:if MACH_ANCORA_TMO
+drivers/Kconfig:source "drivers/sensors_ancora/Kconfig"
+init/main.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)
+init/main.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)
+init/main.c:		printk("Ancora LCD revision : 0x0%d\n",board_lcd_hw_revision);
+init/main.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+init/main.c:		printk("Ancora wrong battery detected!\n");
+arch/arm/configs/ancora_defconfig:CONFIG_MACH_ANCORA=y
+arch/arm/configs/ancora_defconfig:# CONFIG_MACH_ANCORA_TMO is not set
+arch/arm/configs/ancora_defconfig:CONFIG_BATTERY_ANCORA=y
+arch/arm/configs/ancora_defconfig:CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA=y
+arch/arm/configs/ancora_defconfig:CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL=y
+arch/arm/configs/ariesve_defconfig:# CONFIG_MACH_ANCORA is not set
+arch/arm/configs/ariesve_defconfig:# CONFIG_MACH_ANCORA_TMO is not set
+arch/arm/configs/ariesve_defconfig:# CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA is not set
+arch/arm/configs/ariesve_defconfig:# CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL is not set
+arch/arm/configs/ancora_tmo_defconfig:# CONFIG_MACH_ANCORA is not set
+arch/arm/configs/ancora_tmo_defconfig:CONFIG_MACH_ANCORA_TMO=y
+arch/arm/configs/ancora_tmo_defconfig:CONFIG_BATTERY_ANCORA_TMO=y
+arch/arm/configs/ancora_tmo_defconfig:CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA=y
+arch/arm/configs/ancora_tmo_defconfig:CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL=y
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:# CONFIG_MACH_ANCORA is not set
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:CONFIG_MACH_ANCORA_TMO=y
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:CONFIG_BATTERY_ANCORA_TMO=y
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA=y
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL=y
+arch/arm/tools/mach-types:ancora			MACH_ANCORA		ANCORA			2
+arch/arm/tools/mach-types:ancora_tmo		MACH_ANCORA_TMO		ANCORA_TMO		2
+arch/arm/mach-msm/board-ancora_tmo.c:#if LCD_ESD_DET_ENABLE // for ancora LCD ESC DET..
+arch/arm/mach-msm/board-ancora_tmo.c:#if LCD_ESD_DET_ENABLE // for ancora LCD ESC DET..
+arch/arm/mach-msm/board-ancora_tmo.c:static const unsigned int ancora_keymap[] = {
+arch/arm/mach-msm/board-ancora_tmo.c:static struct matrix_keymap_data ancora_keymap_data = {
+arch/arm/mach-msm/board-ancora_tmo.c:	.keymap_size	= ARRAY_SIZE(ancora_keymap),
+arch/arm/mach-msm/board-ancora_tmo.c:	.keymap		= ancora_keymap,
+arch/arm/mach-msm/board-ancora_tmo.c:static struct pm8xxx_keypad_platform_data ancora_keypad_data = {
+arch/arm/mach-msm/board-ancora_tmo.c:	.input_phys_device	= "ancora_keypad/input0",
+arch/arm/mach-msm/board-ancora_tmo.c:	.keymap_data            = &ancora_keymap_data,
+arch/arm/mach-msm/board-ancora_tmo.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/board-ancora_tmo.c:		pm8058_7x30_data.keypad_pdata = &ancora_keypad_data;
+arch/arm/mach-msm/board-ancora_tmo.c:#ifdef CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL
+arch/arm/mach-msm/board-ancora_tmo.c:	.name   = "lcdc_samsung_ancora",
+arch/arm/mach-msm/board-ancora_tmo.c:#if defined (CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL)
+arch/arm/mach-msm/board-ancora_tmo.c:	if (!strcmp(name, "lcdc_samsung_ancora"))
+arch/arm/mach-msm/board-ancora_tmo.c:static struct platform_device ancora_batt_device = {
+arch/arm/mach-msm/board-ancora_tmo.c:	.name 		    = "ancora-battery",
+arch/arm/mach-msm/board-ancora_tmo.c:static void ancora_switch_init(void)
+arch/arm/mach-msm/board-ancora_tmo.c:#ifdef CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL
+arch/arm/mach-msm/board-ancora_tmo.c:	&ancora_batt_device,
+arch/arm/mach-msm/board-ancora_tmo.c:	ancora_switch_init();
+arch/arm/mach-msm/board-ancora_tmo.c:if(board_hw_revision > 1) /* [diony][Ancora] REV0.0 : 0xAC,  REV0.1 : 0x5A */
+arch/arm/mach-msm/board-ancora_tmo.c:MACHINE_START(ANCORA, "SGH-T679 Board")
+arch/arm/mach-msm/clock-7x30.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO)
+arch/arm/mach-msm/Makefile:obj-$(CONFIG_MACH_ANCORA) += board-ancora.o board-ancora-regulator.o devices-msm7x30.o samsung_vibrator.o
+arch/arm/mach-msm/Makefile:obj-$(CONFIG_MACH_ANCORA_TMO) += board-ancora_tmo.o board-ancora_tmo-regulator.o devices-msm7x30.o samsung_vibrator.o
+arch/arm/mach-msm/samsung_vibrator.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/samsung_vibrator.c:#elif defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/samsung_vibrator.c:#elif defined(CONFIG_MACH_ANCORA_TMO)
+arch/arm/mach-msm/samsung_vibrator.c:#elif defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/samsung_vibrator.c:#elif defined(CONFIG_MACH_ANCORA_TMO)
+arch/arm/mach-msm/samsung_vibrator.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/samsung_vibrator.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/samsung_vibrator.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/samsung_vibrator.c:#elif defined(CONFIG_MACH_ANCORA_TMO)
+arch/arm/mach-msm/board-ancora.c:#if LCD_ESD_DET_ENABLE // for ancora LCD ESC DET..
+arch/arm/mach-msm/board-ancora.c:#if LCD_ESD_DET_ENABLE // for ancora LCD ESC DET..
+arch/arm/mach-msm/board-ancora.c:static const unsigned int ancora_keymap[] = {
+arch/arm/mach-msm/board-ancora.c:static struct matrix_keymap_data ancora_keymap_data = {
+arch/arm/mach-msm/board-ancora.c:	.keymap_size	= ARRAY_SIZE(ancora_keymap),
+arch/arm/mach-msm/board-ancora.c:	.keymap		= ancora_keymap,
+arch/arm/mach-msm/board-ancora.c:static struct pm8xxx_keypad_platform_data ancora_keypad_data = {
+arch/arm/mach-msm/board-ancora.c:	.input_phys_device	= "ancora_keypad/input0",
+arch/arm/mach-msm/board-ancora.c:	.keymap_data            = &ancora_keymap_data,
+arch/arm/mach-msm/board-ancora.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/board-ancora.c:		pm8058_7x30_data.keypad_pdata = &ancora_keypad_data;
+arch/arm/mach-msm/board-ancora.c:#ifdef CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL
+arch/arm/mach-msm/board-ancora.c:	.name   = "lcdc_samsung_ancora",
+arch/arm/mach-msm/board-ancora.c:#if defined (CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL)
+arch/arm/mach-msm/board-ancora.c:	if (!strcmp(name, "lcdc_samsung_ancora"))
+arch/arm/mach-msm/board-ancora.c:static struct platform_device ancora_batt_device = {
+arch/arm/mach-msm/board-ancora.c:	.name 		    = "ancora-battery",
+arch/arm/mach-msm/board-ancora.c:static void ancora_switch_init(void)
+arch/arm/mach-msm/board-ancora.c:#ifdef CONFIG_FB_MSM_LCDC_SAMSUNG_ANCORA_PANEL
+arch/arm/mach-msm/board-ancora.c:	&ancora_batt_device,
+arch/arm/mach-msm/board-ancora.c:	ancora_switch_init();
+arch/arm/mach-msm/board-ancora.c:if(board_hw_revision > 1) /* [diony][Ancora] REV0.0 : 0xAC,  REV0.1 : 0x5A */
+arch/arm/mach-msm/board-ancora.c:MACHINE_START(ANCORA, "GT-I8150 Board")
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#elif defined(CONFIG_MACH_ANCORA_TMO)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#include <mach/qdsp5v2/marimba_profile_ancora_tmo.h>
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#elif defined(CONFIG_MACH_ANCORA)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#include <mach/qdsp5v2/marimba_profile_ancora.h>
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_USA) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_USA) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_USA) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_USA) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:static struct platform_device *snd_devices_ancora[] __initdata = {
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:static struct platform_device *snd_devices_ancora[] __initdata = {
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#if defined(CONFIG_MACH_ANCORA_TMO)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:static struct platform_device *snd_devices_ancora[] __initdata = {
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#elif defined(CONFIG_MACH_ANCORA)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:   		platform_add_devices(snd_devices_ancora,
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:		ARRAY_SIZE(snd_devices_ancora));
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:#elif defined(CONFIG_MACH_ANCORA_TMO)
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:   		platform_add_devices(snd_devices_ancora,
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:		ARRAY_SIZE(snd_devices_ancora));
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:   		platform_add_devices(snd_devices_ancora,
+arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.c:		ARRAY_SIZE(snd_devices_ancora));
+arch/arm/mach-msm/include/mach/parameters.h:#if (defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE))
+arch/arm/mach-msm/include/mach/qdsp5v2/audio_acdb_def.h:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/include/mach/qdsp5v2/audio_acdb_def.h:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/include/mach/qdsp5v2/audio_acdb_def.h:#if defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/include/mach/qdsp5v2/audio_acdb_def.h:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/include/mach/qdsp5v2/audio_dev_ctl.h:#ifdef CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/include/mach/samsung_vibe.h:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_GODART)
+arch/arm/mach-msm/include/mach/samsung_vibe.h:#if defined(CONFIG_MACH_ANCORA_TMO)
+arch/arm/mach-msm/include/mach/samsung_vibe.h:#endif //CONFIG_MACH_ANCORA_TMO
+arch/arm/mach-msm/include/mach/board.h:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/smd_rpcrouter.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/smd_rpcrouter.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/smd_rpcrouter.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/Kconfig:config MACH_ANCORA
+arch/arm/mach-msm/Kconfig:	bool "ANCORA"
+arch/arm/mach-msm/Kconfig:	  Support for the Samsung Ancora board.
+arch/arm/mach-msm/Kconfig:config MACH_ANCORA_TMO
+arch/arm/mach-msm/Kconfig:	bool "ANCORA_TMO"
+arch/arm/mach-msm/Kconfig:	  Support for the Samsung Ancora TMO board.
+arch/arm/mach-msm/Kconfig:	depends on MACH_ARIESVE || MACH_ANCORA  || MACH_GODART || MACH_ANCORA_TMO || MACH_APACHE
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/mach-msm/pm2.c:#if defined(CONFIG_MACH_ARIESVE) || defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+include/linux/sec_jack.h:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+include/linux/sec_jack.h:#if defined(CONFIG_MACH_ANCORA) || defined(CONFIG_MACH_ANCORA_TMO) || defined(CONFIG_MACH_APACHE)
+arch/arm/configs/ancora_defconfig:CONFIG_APPSBOOT_3M_CONFIG=y
+arch/arm/configs/ariesve_defconfig:CONFIG_APPSBOOT_3M_CONFIG=y
+arch/arm/configs/ancora_tmo_defconfig:CONFIG_APPSBOOT_3M_CONFIG=y
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:CONFIG_APPSBOOT_3M_CONFIG=y
+arch/arm/mach-msm/board-ariesve.c:#if defined(CONFIG_APPSBOOT_3M_CONFIG)
+arch/arm/mach-msm/board-ancora_tmo.c:#if defined(CONFIG_APPSBOOT_3M_CONFIG)
+arch/arm/mach-msm/io.c:#if defined(CONFIG_APPSBOOT_3M_CONFIG)
+arch/arm/mach-msm/board-ancora.c:#if defined(CONFIG_APPSBOOT_3M_CONFIG)
+arch/arm/mach-msm/smd_private.h:	/* RAM Partition type: system, bootloader, appsboot, apps etc. */
+arch/arm/mach-msm/Makefile.boot:ifeq ($(CONFIG_APPSBOOT_3M_CONFIG),y)
+arch/arm/mach-msm/Kconfig:	select APPSBOOT_3M_CONFIG
+arch/arm/mach-msm/Kconfig:	select APPSBOOT_3M_CONFIG
+arch/arm/mach-msm/Kconfig:	select APPSBOOT_3M_CONFIG
+arch/arm/mach-msm/Kconfig:config APPSBOOT_3M_CONFIG
+arch/arm/mach-msm/Kconfig:	default "0x00200000" if !MSM_STACKED_MEMORY && !APPSBOOT_3M_CONFIG
+arch/arm/mach-msm/Kconfig:	default "0x00400000" if !MSM_STACKED_MEMORY && APPSBOOT_3M_CONFIG
+drivers/net/sfc/regs.h:	__le16 board_revision;
+drivers/net/sfc/falcon.c:				le16_to_cpu(nvconfig->board_v2.board_revision));
+drivers/net/wireless/iwlegacy/iwl-3945-hw.h:	u16 board_revision;	/* abs.ofs: 106 */
+drivers/net/wireless/iwlegacy/iwl-3945.c:	if ((eeprom->board_revision & 0xF0) == 0xD0) {
+drivers/net/wireless/iwlegacy/iwl-3945.c:			       eeprom->board_revision);
+drivers/net/wireless/iwlegacy/iwl-3945.c:			       eeprom->board_revision);
+drivers/net/wireless/iwlegacy/iwl-eeprom.h:#define EEPROM_4965_BOARD_REVISION             (2*0x4F) /* 2 bytes */
+drivers/net/wireless/iwlegacy/iwl-eeprom.h:#define EEPROM_BOARD_REVISION               (2*0x35)	/* 2  bytes */
+drivers/net/wireless/iwlwifi/iwl-eeprom.h:#define EEPROM_BOARD_REVISION               (2*0x35)	/* 2  bytes */
+drivers/usb/serial/io_usbvend.h:#define TI_GET_BOARD_REVISION(x)	(__u8)(((x)&0x0f))
+drivers/media/video/msm/s5ka3dfx.h:#if (CONFIG_BOARD_REVISION >= 0x01)
+drivers/media/video/msm/s5ka3dfx.h:#if (CONFIG_BOARD_REVISION >= 0x01)
+drivers/media/video/msm/sr030pc30.h:#if (CONFIG_BOARD_REVISION >= 0x01)
+drivers/media/video/msm/sr030pc30.h:#if (CONFIG_BOARD_REVISION >= 0x01)
+arch/arm/configs/ancora_defconfig:CONFIG_BOARD_REVISION=0x00
+arch/arm/configs/ariesve_defconfig:CONFIG_BOARD_REVISION=0x00
+arch/arm/configs/ancora_tmo_defconfig:CONFIG_BOARD_REVISION=0x00
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:CONFIG_BOARD_REVISION=0x00
+arch/arm/mach-msm/Kconfig:config BOARD_REVISION
+arch/tile/kernel/sysfs.c:HV_CONF_ATTR(board_revision,	HV_CONFSTR_BOARD_REV)
+arch/tile/kernel/sysfs.c:	&attr_board_revision.attr,
+arch/x86/platform/olpc/olpc.c:static u32 __init get_board_revision(struct device_node *root)
+arch/x86/platform/olpc/olpc.c:		olpc_platform_info.boardrev = get_board_revision(root);

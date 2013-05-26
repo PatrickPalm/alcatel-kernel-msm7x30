@@ -60,6 +60,7 @@ static const char driver_name[] = "msm72k_udc";
 
 #define SETUP_BUF_SIZE     8
 
+
 static const char *const ep_name[] = {
 	"ep0out", "ep1out", "ep2out", "ep3out",
 	"ep4out", "ep5out", "ep6out", "ep7out",
@@ -1275,8 +1276,12 @@ static void flush_endpoint(struct msm_endpoint *ept)
 static irqreturn_t usb_interrupt(int irq, void *data)
 {
 	struct usb_info *ui = data;
+	struct msm_otg *dev = to_msm_otg(ui->xceiv);
 	unsigned n;
 	unsigned long flags;
+
+	if (atomic_read(&dev->in_lpm))
+		return IRQ_NONE;
 
 	n = readl(USB_USBSTS);
 	writel(n, USB_USBSTS);
@@ -2589,6 +2594,20 @@ static struct attribute_group otg_attr_grp = {
 	.attrs = otg_attrs,
 };
 #endif
+
+void usb_force_reset(void)
+{
+	struct usb_info *ui = the_usb_info;
+	unsigned long flags;
+
+	spin_lock_irqsave(&ui->lock, flags);
+	ui->flags |= USB_FLAG_RESET;
+	schedule_work(&ui->work);
+	spin_unlock_irqrestore(&ui->lock, flags);
+
+	return;
+}
+EXPORT_SYMBOL(usb_force_reset);
 
 static int msm72k_probe(struct platform_device *pdev)
 {

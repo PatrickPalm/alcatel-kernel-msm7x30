@@ -496,7 +496,7 @@ static void __init build_mem_type_table(void)
 	}
 
 	for (i = 0; i < 16; i++) {
-		unsigned long v = pgprot_val(protection_map[i]);
+		pteval_t v = pgprot_val(protection_map[i]);
 		protection_map[i] = __pgprot(v | user_pgprot);
 	}
 
@@ -794,6 +794,10 @@ static phys_addr_t lowmem_limit __initdata = 0;
 void __init sanity_check_meminfo(void)
 {
 	int i, j, highmem = 0;
+
+#ifdef CONFIG_DONT_MAP_HOLE_AFTER_MEMBANK0
+	find_membank0_hole();
+#endif
 
 #if (defined CONFIG_HIGHMEM) && (defined CONFIG_FIX_MOVABLE_ZONE)
 	if (movable_reserved_size && __pa(vmalloc_min) > movable_reserved_start)

@@ -16,6 +16,8 @@
 #include <linux/device.h>
 #include <linux/rwsem.h>
 #include <linux/leds.h>
+#include <linux/workqueue.h>
+
 #ifdef CONFIG_HAS_EARLYSUSPEND
 
 extern struct workqueue_struct *suspend_work_queue;
@@ -36,11 +38,11 @@ static inline void led_set_brightness(struct led_classdev *led_cdev,
 	if (value > led_cdev->max_brightness)
 		value = led_cdev->max_brightness;
 	led_cdev->brightness = value;
-	if (!(led_cdev->flags & LED_SUSPENDED)){
+	if (!(led_cdev->flags & LED_SUSPENDED)) {
 #ifdef CONFIG_HAS_EARLYSUSPEND
 		if (queue_brightness_change(led_cdev, value) != 0)
 #endif
-		led_cdev->brightness_set(led_cdev, value);
+			led_cdev->brightness_set(led_cdev, value);
 	}
 }
 

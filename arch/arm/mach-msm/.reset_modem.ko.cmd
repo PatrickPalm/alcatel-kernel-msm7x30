@@ -1,0 +1,1 @@
+cmd_arch/arm/mach-msm/reset_modem.ko := /home/jinxxed/Source/cm-10.1/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/jinxxed/PatrickPalm/samsung-kernel-msm7x30/scripts/module-common.lds --build-id  -o arch/arm/mach-msm/reset_modem.ko arch/arm/mach-msm/reset_modem.o arch/arm/mach-msm/reset_modem.mod.o

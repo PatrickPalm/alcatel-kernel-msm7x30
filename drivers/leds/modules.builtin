@@ -1,0 +1,2 @@
+kernel/drivers/leds/leds-pmic8058.ko
+kernel/drivers/leds/led-notification.ko

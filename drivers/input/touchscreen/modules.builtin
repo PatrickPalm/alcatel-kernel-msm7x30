@@ -1,0 +1,4 @@
+kernel/drivers/input/touchscreen/tsc2007.ko
+kernel/drivers/input/touchscreen/cy8c_ts.ko
+kernel/drivers/input/touchscreen/cyttsp-i2c.ko
+kernel/drivers/input/touchscreen/ft5306.ko

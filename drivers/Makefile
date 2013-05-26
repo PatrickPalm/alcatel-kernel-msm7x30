@@ -125,3 +125,9 @@ obj-y				+= ieee802154/
 obj-y				+= clk/
 
 obj-$(CONFIG_HWSPINLOCK)	+= hwspinlock/
+
+obj-y				+= dpram/
+obj-$(CONFIG_MACH_ANCORA)	+= sensors_ancora/
+obj-$(CONFIG_MACH_ANCORA_TMO)	+= sensors_ancora/
+obj-$(CONFIG_MACH_ARIESVE)	+= sensors_ariesve/
+

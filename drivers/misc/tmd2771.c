@@ -103,7 +103,6 @@
 // forward declarations
 static int taos_probe(struct i2c_client *clientp,
 		      const struct i2c_device_id *idp);
-static int taos_ps_calibrate(void);
 static int taos_remove(struct i2c_client *client);
 static int taos_suspend(struct i2c_client *client, pm_message_t message);
 static int taos_resume(struct i2c_client *client);
@@ -200,8 +199,8 @@ static u16 scale_factor_param = 1;
 static u16 gain_trim_param = 512;
 static u8 filter_history_param = 3;
 static u8 gain_param = 2;
-static u16 prox_threshold_hi_param = 700;
-static u16 prox_threshold_lo_param = 600;
+static u16 prox_threshold_hi_param = 120;
+static u16 prox_threshold_lo_param = 80;
 static u16 als_threshold_hi_param = 3000;
 static u16 als_threshold_lo_param = 10;
 static u8 prox_int_time_param = 0xEE;	//50ms
@@ -209,7 +208,7 @@ static u8 prox_adc_time_param = 0xFF;
 static u8 prox_wait_time_param = 0xEE;
 static u8 prox_intr_filter_param = 0x13;
 static u8 prox_config_param = 0x00;
-static u8 prox_pulse_cnt_param = 0x04;
+static u8 prox_pulse_cnt_param = 0x08;
 static u8 prox_gain_param = 0x22;
 
 // prox info
@@ -373,150 +372,6 @@ static int taos_als_get_data(void)
 	return ret;
 }
 
-static int taos_ps_calibrate(void)
-{
-	int prox_sum = 0, prox_mean = 0, prox_max = 0;
-	int ret = 0, i = 0;
-	u8 reg_val = 0, reg_cntrl = 0;
-
-	if ((ret =
-	     taos_write_byte(taos_datap->client,
-			     TAOS_TRITON_ALS_TIME,
-			     taos_cfgp->prox_int_time)) < -1) {
-		printk(KERN_ERR "%s: write the als time is failed\n", __func__);
-		return ret;
-	}
-	if ((ret =
-	     taos_write_byte(taos_datap->client,
-			     TAOS_TRITON_PRX_TIME,
-			     taos_cfgp->prox_adc_time)) < -1) {
-		printk(KERN_ERR
-		       "%s: write the prox time is failed\n", __func__);
-		return ret;
-	}
-	if ((ret =
-	     taos_write_byte(taos_datap->client,
-			     TAOS_TRITON_WAIT_TIME,
-			     taos_cfgp->prox_wait_time)) < -1) {
-		printk(KERN_ERR
-		       "%s: write the wait time is failed\n", __func__);
-		return ret;
-	}
-	if ((ret =
-	     taos_write_byte(taos_datap->client,
-			     TAOS_TRITON_INTERRUPT,
-			     taos_cfgp->prox_intr_filter)) < -1) {
-		printk(KERN_ERR
-		       "%s: write the interrupt time is failed\n", __func__);
-		return ret;
-	}
-	if ((ret =
-	     taos_write_byte(taos_datap->client,
-			     TAOS_TRITON_PRX_CFG,
-			     taos_cfgp->prox_config)) < -1) {
-		printk(KERN_ERR
-		       "%s: write the prox_config is failed\n", __func__);
-		return ret;
-	}
-	if ((ret =
-	     taos_write_byte(taos_datap->client,
-			     TAOS_TRITON_PRX_COUNT,
-			     taos_cfgp->prox_pulse_cnt)) < -1) {
-		printk(KERN_ERR
-		       "%s: write the pulse count time is failed\n", __func__);
-		return ret;
-	}
-	if ((ret =
-	     taos_write_byte(taos_datap->client,
-			     TAOS_TRITON_GAIN, taos_cfgp->prox_gain)) < -1) {
-		printk(KERN_ERR
-		       "%s: write the gain time is failed\n", __func__);
-		return ret;
-	}
-	/*if ((reg_val =
-	     taos_read_byte(taos_datap->client, TAOS_TRITON_CNTRL)) < 0) {
-		printk(KERN_ERR "TAOS: read CNTRL failed in ioctl prox_on\n");
-		return ret;
-	}*/   //TAOS
-	reg_cntrl =
-	    reg_val | (TAOS_TRITON_CNTL_PROX_DET_ENBL |
-		       TAOS_TRITON_CNTL_PWRON | TAOS_TRITON_CNTL_ADC_ENBL);
-	if ((ret =
-	     taos_write_byte(taos_datap->client,
-			     TAOS_TRITON_CNTRL, reg_cntrl)) < 0) {
-		printk(KERN_ERR
-		       "TAOS: write reg_cntrl failed in ioctl prox_on\n");
-		return (ret);
-	}
-
-	prox_sum = 0;
-	prox_max = 0;
-	for (i = 0; i < 20; i++) {
-		if ((ret = taos_prox_poll(&prox_cal_info[i])) < 0) {
-			printk(KERN_ERR
-			       "TAOS: call to prox_poll failed in ioctl prox_calibrate\n");
-			return (ret);
-		}
-		printk("[ tmd2771 ] <%s> %d\n", __func__, prox_cal_info[i].prox_data);
-		prox_sum += prox_cal_info[i].prox_data;
-		if (prox_cal_info[i].prox_data > prox_max)
-			prox_max = prox_cal_info[i].prox_data;
-		mdelay(100);
-	}
-	prox_mean = prox_sum / 20;
-	printk("[ tmd2771 ] <%s> %d\n", __func__, prox_mean);
-	printk("[ tmd2771 ] <%s> %d\n", __func__, prox_sum);
-	taos_cfgp->prox_threshold_hi =
-	    ((((prox_max - prox_mean) * 200) + 50) / 100) + prox_mean;
-	taos_cfgp->prox_threshold_lo =
-	    ((((prox_max - prox_mean) * 170) + 50) / 100) + prox_mean;
-	if (taos_cfgp->prox_threshold_hi >900)
-		{
-		taos_cfgp->prox_threshold_hi =prox_threshold_hi_param;
-		taos_cfgp->prox_threshold_lo =prox_threshold_lo_param;
-		}
-	if (taos_cfgp->prox_threshold_lo< 100)
-		{
-		taos_cfgp->prox_threshold_hi =200;
-		taos_cfgp->prox_threshold_lo =150;
-		}
-	/*if (taos_cfgp->prox_threshold_hi < prox_threshold_hi_param)
-		taos_cfgp->prox_threshold_hi =
-		    (taos_cfgp->prox_threshold_hi +
-		     prox_threshold_hi_param) / 2;
-	if (taos_cfgp->prox_threshold_lo > prox_threshold_lo_param)
-		taos_cfgp->prox_threshold_lo =
-		    (taos_cfgp->prox_threshold_lo +
-		     prox_threshold_lo_param) / 2;
-	prox_mean = taos_cfgp->prox_threshold_hi - taos_cfgp->prox_threshold_lo;
-	if (prox_mean < 30) {
-		taos_cfgp->prox_threshold_hi += prox_mean / 2;
-		if (taos_cfgp->prox_threshold_lo > prox_mean)
-			taos_cfgp->prox_threshold_lo -= prox_mean / 2;
-	}
-	if (taos_cfgp->prox_threshold_lo > prox_threshold_lo_param * 3) {
-		taos_cfgp->prox_threshold_lo = prox_threshold_lo_param;
-		taos_cfgp->prox_threshold_hi = prox_threshold_hi_param;
-	}*/
-//if(calibrate){
-	for (i = 0; i < sizeof(taos_triton_reg_init); i++) {
-		if (i != 11) {
-			if ((ret =
-			     taos_write_byte(taos_datap->client,
-					     TAOS_TRITON_CNTRL +
-					     i, taos_triton_reg_init[i])) < 0) {
-				printk(KERN_ERR
-				       "TAOS: write reg_init failed in ioctl\n");
-				return (ret);
-			}
-		}
-	}
-//}
-	printk("taos_cfgp->prox_threshold_hi = %d\n", taos_cfgp->prox_threshold_hi);
-	printk("taos_cfgp->prox_threshold_lo = %d\n", taos_cfgp->prox_threshold_lo);
-	return ret;
-}
-
 static int taos_als_threshold_set(void)
 {
 	int i, ret = 0;
@@ -657,46 +512,7 @@ static void __exit taos_exit(void)
 	disable_irq(taos_datap->client->irq);
 	kfree(taos_datap);
 }
-/*
-static ssize_t taos_data(struct device *dev,
-	struct device_attribute *attr, char *buf)
-{
-	int i;
-	u8 chdata[6];
-	u16 proxdata = 0;
-	u16 cleardata = 0;
-//	int data = 0;
 
-	for (i = 0; i < 6; i++) {
-		chdata[i] =
-		    taos_read_byte(taos_datap->client,
-				   TAOS_TRITON_ALS_CHAN0LO + i);
-	}
-	cleardata = chdata[0] + chdata[1] * 256;
-	proxdata = chdata[4] + chdata[5] * 256;
-	return snprintf(buf,PAGE_SIZE,"cleardata is %d,proxdata is %d\n",cleardata,proxdata);
-}
-
-static DEVICE_ATTR(prx_data,0777,taos_data,NULL);
-static ssize_t get_thelod(struct device *dev,
-	struct device_attribute *attr, char *buf)
-{
-	int mcount;
-	u8 pro_buf[4] = {0,0,0,0};
-	u16 low_thld;
-	u16 hig_thld;
-	
-	for (mcount = 0; mcount < 4; mcount++) {
-		pro_buf[mcount] =
-		     taos_read_byte(taos_datap->client,
-				     TAOS_TRITON_PRX_MINTHRESHLO + mcount);
-	}
-	low_thld = pro_buf[0] | (pro_buf[1] << 8);
-	hig_thld = pro_buf[2] | (pro_buf[3] << 8);
-	return snprintf(buf,PAGE_SIZE,"low_thld = %d, high_thld = %d\n",low_thld,hig_thld);
-}
-static DEVICE_ATTR(prx_threshold,0777,get_thelod,NULL);
-*/
 // client probe
 static int taos_probe(struct i2c_client *clientp,
 		      const struct i2c_device_id *idp)
@@ -807,9 +623,7 @@ static int taos_probe(struct i2c_client *clientp,
 	}
 	printk("request tmd2771x irq : %d succeed\n", clientp->irq);
 	disable_irq(clientp->irq);
-//	taos_ps_calibrate(); // ADD by OPTO-SENSOR
-//	ret = device_create_file(&(taos_datap->input_dev->dev),&dev_attr_prx_data);
-//	ret = device_create_file(&(taos_datap->input_dev->dev),&dev_attr_prx_threshold);
+
 	return (ret);
 }
 
@@ -1081,7 +895,7 @@ static int taos_sensors_als_on(void)
 static long taos_ioctl (struct file *file, unsigned int cmd, unsigned long arg)
 {
 	struct taos_data *taos_datap;
-//	int prox_sum = 0, prox_mean = 0, prox_max = 0;
+	int prox_sum = 0, prox_mean = 0, prox_max = 0;
 	int lux_val = 0, ret = 0, i = 0, tmp = 0;
 	u16 gain_trim_val = 0;
 	u8 reg_val = 0, reg_cntrl = 0;
@@ -1498,11 +1312,6 @@ static long taos_ioctl (struct file *file, unsigned int cmd, unsigned long arg)
 			return (ret);
 			break;
 		case TAOS_IOCTL_PROX_CALIBRATE:
-			printk(KERN_ALERT "####HAHA,PROX CALIBRATE##### \n");
-			taos_ps_calibrate();
-			break;
-			#if 0
-			printk(KERN_ALERT "#####NOW, LET ME SEE IF THIS IS SHOWN####\n");
 			if ((ret =
 			     taos_write_byte(taos_datap->client,
 					     TAOS_TRITON_ALS_TIME,
@@ -1620,28 +1429,10 @@ static long taos_ioctl (struct file *file, unsigned int cmd, unsigned long arg)
 					if(taos_cfgp->prox_threshold_lo > prox_mean)
 							taos_cfgp->prox_threshold_lo -= prox_mean/2;
 			}
-
-#if 0
 			if(taos_cfgp->prox_threshold_lo > prox_threshold_lo_param*3) {
 					taos_cfgp->prox_threshold_lo = prox_threshold_lo_param;
 					taos_cfgp->prox_threshold_hi = prox_threshold_hi_param;
 			}
-#endif
-
-			/* get smaller value */
-			if (taos_cfgp->prox_threshold_lo < ((sat_prox * 3) / 100)) {
-				taos_cfgp->prox_threshold_lo = ((sat_prox * 4) / 100);
-				taos_cfgp->prox_threshold_hi = ((sat_prox * 7) / 100);
-			}
-
-			/* panel down */
-			if (taos_cfgp->prox_threshold_hi > ((sat_prox * 60) / 100)) {
-				taos_cfgp->prox_threshold_lo = sat_prox * 35 / 100;
-				taos_cfgp->prox_threshold_hi = sat_prox * 40 / 100;
-			}
-
-			printk("XXXXX prox_threshold_lo = %d XXXXX\n", taos_cfgp->prox_threshold_lo);
-			printk("XXXXX prox_threshold_hi = %d XXXXX\n", taos_cfgp->prox_threshold_hi);
 
 			for (i = 0; i < sizeof(taos_triton_reg_init); i++) {
 				if (i != 11) {
@@ -1658,7 +1449,6 @@ static long taos_ioctl (struct file *file, unsigned int cmd, unsigned long arg)
 				}
 			}
 			break;
-			#endif
 		default:
 			return -EINVAL;
 			break;

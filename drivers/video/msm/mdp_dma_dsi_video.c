@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2012, Code Aurora Forum. All rights reserved.
+/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -32,8 +32,6 @@
 
 static int first_pixel_start_x;
 static int first_pixel_start_y;
-
-static int first_time_video_on = 1;
 
 static ssize_t vsync_show_event(struct device *dev,
 		struct device_attribute *attr, char *buf)
@@ -102,7 +100,7 @@ int mdp_dsi_video_on(struct platform_device *pdev)
 	struct fb_var_screeninfo *var;
 	struct msm_fb_data_type *mfd;
 	int ret;
-	uint32 mask, curr;
+	uint32_t mask, curr;
 
 	mfd = (struct msm_fb_data_type *)platform_get_drvdata(pdev);
 
@@ -173,8 +171,8 @@ int mdp_dsi_video_on(struct platform_device *pdev)
 	MDP_OUTP(MDP_BASE + DMA_P_BASE + 0x10, 0);
 
 	/* dma config */
-	curr = inpdw(MDP_BASE + 0x90000);
-	mask = 0xBFFFFFFF;
+	curr = inpdw(MDP_BASE + DMA_P_BASE);
+	mask = 0x0FFFFFFF;
 	dma2_cfg_reg = (dma2_cfg_reg & mask) | (curr & ~mask);
 	MDP_OUTP(MDP_BASE + DMA_P_BASE, dma2_cfg_reg);
 
@@ -236,13 +234,6 @@ int mdp_dsi_video_on(struct platform_device *pdev)
 	MDP_OUTP(MDP_BASE + DSI_VIDEO_BASE + 0x30, dsi_hsync_skew);
 	MDP_OUTP(MDP_BASE + DSI_VIDEO_BASE + 0x38, ctrl_polarity);
 
-	if(first_time_video_on) {
-		first_time_video_on = 0;
-		MDP_OUTP(MDP_BASE + DSI_VIDEO_BASE, 0);
-		/*Turning off DMA_P block*/
-		mdp_pipe_ctrl(MDP_DMA2_BLOCK, MDP_BLOCK_POWER_OFF, FALSE);
-		mdelay(1);
-	}
 	ret = panel_next_on(pdev);
 	if (ret == 0) {
 		/* enable DSI block */
@@ -267,6 +258,7 @@ int mdp_dsi_video_on(struct platform_device *pdev)
 		pr_debug("%s: kobject_uevent(KOBJ_ADD)\n", __func__);
 		vsync_cntrl.sysfs_created = 1;
 	}
+	mdp_histogram_ctrl_all(TRUE);
 
 	return ret;
 }
@@ -274,6 +266,7 @@ int mdp_dsi_video_on(struct platform_device *pdev)
 int mdp_dsi_video_off(struct platform_device *pdev)
 {
 	int ret = 0;
+	mdp_histogram_ctrl_all(FALSE);
 	/* MDP cmd block enable */
 	mdp_pipe_ctrl(MDP_CMD_BLOCK, MDP_BLOCK_POWER_ON, FALSE);
 	MDP_OUTP(MDP_BASE + DSI_VIDEO_BASE, 0);
@@ -305,20 +298,22 @@ void mdp_dma_video_vsync_ctrl(int enable)
 		INIT_COMPLETION(vsync_cntrl.vsync_wait);
 
 	vsync_cntrl.vsync_irq_enabled = enable;
-	if (!enable)
-		vsync_cntrl.disabled_clocks = 0;
 	disabled_clocks = vsync_cntrl.disabled_clocks;
 	spin_unlock_irqrestore(&mdp_spin_lock, flag);
 
-	if (enable && disabled_clocks) {
+	if (enable && disabled_clocks)
 		mdp_pipe_ctrl(MDP_CMD_BLOCK, MDP_BLOCK_POWER_ON, FALSE);
-		spin_lock_irqsave(&mdp_spin_lock, flag);
+
+	spin_lock_irqsave(&mdp_spin_lock, flag);
+	if (enable && vsync_cntrl.disabled_clocks) {
 		outp32(MDP_INTR_CLEAR, LCDC_FRAME_START);
 		mdp_intr_mask |= LCDC_FRAME_START;
 		outp32(MDP_INTR_ENABLE, mdp_intr_mask);
 		mdp_enable_irq(MDP_VSYNC_TERM);
-		spin_unlock_irqrestore(&mdp_spin_lock, flag);
+		vsync_cntrl.disabled_clocks = 0;
 	}
+	spin_unlock_irqrestore(&mdp_spin_lock, flag);
+
 	if (vsync_cntrl.vsync_irq_enabled &&
 		atomic_read(&vsync_cntrl.suspend) == 0)
 		atomic_set(&vsync_cntrl.vsync_resume, 1);

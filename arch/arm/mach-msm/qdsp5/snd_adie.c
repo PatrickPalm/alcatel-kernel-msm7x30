@@ -459,13 +459,8 @@ static int __init snd_adie_init(void)
 	char name[sizeof "msm_snd_adie"];
 
 	snprintf(name, sizeof name, "msm_snd_adie");
-#if 0
 	dentry = debugfs_create_file(name, S_IFREG | S_IRUGO | S_IWUGO,
 			NULL, NULL, &snd_adie_debug_fops);
-#else
-	dentry = debugfs_create_file(name, S_IFREG | 00644,
-			NULL, NULL, &snd_adie_debug_fops);
-#endif
 	if (IS_ERR(dentry))
 		MM_DBG("debugfs_create_file failed\n");
 #endif

@@ -168,6 +168,7 @@ config ARCH_MSM8960
 	select MULTI_IRQ_HANDLER
 	select MSM_PM8X60 if PM
 	select HOLES_IN_ZONE if SPARSEMEM
+	select MSM_KRAIT_WFE_FIXUP
 
 config ARCH_MSM8930
 	bool "MSM8930"
@@ -205,6 +206,7 @@ config ARCH_MSM8930
 	select MULTI_IRQ_HANDLER
 	select MSM_PM8X60 if PM
 	select HOLES_IN_ZONE if SPARSEMEM
+	select MSM_KRAIT_WFE_FIXUP
 
 config ARCH_APQ8064
 	bool "APQ8064"
@@ -222,6 +224,7 @@ config ARCH_APQ8064
 	select MULTI_IRQ_HANDLER
 	select MSM_PM8X60 if PM
 	select HOLES_IN_ZONE if SPARSEMEM
+	select MSM_KRAIT_WFE_FIXUP
 
 config ARCH_MSMCOPPER
 	bool "MSM Copper"
@@ -306,6 +309,9 @@ config  ARCH_MSM_SCORPIONMP
 config  ARCH_MSM_KRAITMP
 	select ARCH_MSM_KRAIT
 	select MSM_SMP
+	bool
+
+config  MSM_KRAIT_WFE_FIXUP
 	bool
 
 config  ARCH_MSM_CORTEX_A5
@@ -1386,7 +1392,58 @@ config MSM_CPU_FREQ_MIN
 	depends on MSM_CPU_FREQ_SET_MIN_MAX
 	default 245760
 
+choice
+	prompt "CPU Frequency Voltages"
+	depends on ARCH_MSM7X30
+	default MSM_CPU_FREQ_DEFAULT_V
+
+config MSM_CPU_FREQ_DEFAULT_V
+	bool "Default CPU frequency voltages"
+	help
+	  Enabling this option allow to use default CPU frequency voltages.
+
+config MSM_CPU_FREQ_NORMAL_UV
+	bool "Normally undervolted CPU frequency voltages"
+	help
+	  Enabling this option allow to use normally undervolted CPU frequency voltages.
+
+config MSM_CPU_FREQ_EXTREME_UV
+	bool "Extremely undervolted CPU frequency voltages"
+	help
+	  Enabling this option allow to use extremely undervolted CPU frequency voltages.
+
+endchoice
+
+config MSM_CPU_FREQ_OVERCLOCKING
+	bool "Enable support for CPU overclocking"
+	depends on ARCH_MSM7X30
+	default y
+	help
+	  Enabling this option allow to use all overclock frequencies.
+
 endif # CPU_FREQ_MSM
+
+choice
+	prompt "Available Memory"
+	depends on ARCH_MSM7X30
+	default MSM_MEMORY_DEFAULT
+
+config MSM_MEMORY_DEFAULT
+	bool "Enable 350 MB of free RAM"
+	help
+	  Enabling this option allow to have 350 MB of free ram.
+
+config MSM_MEMORY_HIGH
+	bool "Enable 360 MB of free RAM"
+	help
+	  Enabling this option allow to have 360 MB of free ram.
+
+config MSM_MEMORY_VERY_HIGH
+	bool "Enable 370 MB of free RAM"
+	help
+	  Enabling this option allow to have 370 MB of free ram.
+
+endchoice
 
 config MSM_CPU_AVS
 	bool "Enable software controlled Adaptive Voltage Scaling (AVS)"
@@ -2077,6 +2134,28 @@ config MSM_L1_ERR_PANIC
 
 	  For production builds, you should probably say 'N' here.
 
+config MSM_L2_ERP_PRINT_ACCESS_ERRORS
+	bool "Report L2 master port slave/decode errors in kernel log"
+	depends on MSM_CACHE_ERP
+	help
+	  Master port errors can occur when a memory request is not properly
+	  handled by the destination slave. This can occur if the destination
+	  register does not exist or is inaccessible due to security
+	  restrictions or (in some cases) clock configuration. Enabling this
+	  option will cause a backtrace to be printed to the kernel log whenever
+	  such an error is encountered. Note that the error is reported as an
+	  interrupt rather than as an exception, meaning that the backtrace may
+	  have some skid. This option may help with debugging, though production
+	  builds should probably say 'N' here.
+config MSM_L1_ERR_LOG
+	bool "Log CPU ERP events to system memory"
+	depends on MSM_CACHE_ERP
+	help
+	  Enable logging CPU ERP events to an area of memory that will be
+	  preserved across a system reset. This may be useful for detecting and
+	  troubleshooting ERP-related system crashes in the field.
+
+	  For production builds, you may want to say 'Y' here.
 
 config MSM_L2_ERP_PORT_PANIC
 	bool "Panic on L2 master port errors"

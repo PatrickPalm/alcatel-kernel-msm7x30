@@ -1,0 +1,2 @@
+kernel/drivers/char/msm_rotator.ko
+kernel/drivers/char/frandom.ko

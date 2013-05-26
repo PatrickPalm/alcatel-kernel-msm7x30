@@ -36,8 +36,49 @@ static void memset16(void *_ptr, unsigned short val, unsigned count)
 		*ptr++ = val;
 }
 
+/* convert RGB565 to RBG8888 */
+static void memset16_rgb8888(void *_ptr, unsigned short val, unsigned count)
+{
+	unsigned short *ptr = _ptr;
+	unsigned short red;
+	unsigned short green;
+	unsigned short blue;
+
+	red = (val & 0xF800) >> 8;
+	green = (val & 0x7E0) >> 3;
+	blue = (val & 0x1F) << 3;
+
+	count >>= 1;
+	while (count--) {
+		*ptr++ = (red<<8) | green;
+		*ptr++ = blue;
+	}
+}
+
+#ifndef CONFIG_FRAMEBUFFER_CONSOLE
+static int enable_framebuffer(struct fb_info *fb)
+{
+	int ret = 0;
+	static int status;
+	struct module *owner;
+
+	if (!status) {
+		status = 1;
+		owner = fb->fbops->owner;
+		if (!try_module_get(owner))
+			return -ENODEV;
+		if (fb->fbops->fb_open && fb->fbops->fb_open(fb, 0)) {
+			module_put(owner);
+			return -ENODEV;
+		}
+	}
+
+	return ret;
+}
+#endif
+
 /* 565RLE image format: [count(2 bytes), rle(2 bytes)] */
-int load_565rle_image(char *filename)
+int load_565rle_image(char *filename, bool bf_supported)
 {
 	struct fb_info *info;
 	int fd, count, err = 0;
@@ -50,6 +91,11 @@ int load_565rle_image(char *filename)
 			__func__);
 		return -ENODEV;
 	}
+
+#ifndef CONFIG_FRAMEBUFFER_CONSOLE
+	if (enable_framebuffer(info))
+		return -ENODEV;
+#endif
 
 	fd = sys_open(filename, O_RDONLY, 0);
 	if (fd < 0) {
@@ -76,13 +122,25 @@ int load_565rle_image(char *filename)
 
 	max = fb_width(info) * fb_height(info);
 	ptr = data;
+	if (bf_supported && (info->node == 1 || info->node == 2)) {
+		err = -EPERM;
+		pr_err("%s:%d no info->creen_base on fb%d!\n",
+		       __func__, __LINE__, info->node);
+		goto err_logo_free_data;
+	}
 	bits = (unsigned short *)(info->screen_base);
 	while (count > 3) {
 		unsigned n = ptr[0];
 		if (n > max)
 			break;
-		memset16(bits, ptr[1], n << 1);
-		bits += n;
+		if (info->var.bits_per_pixel >= 24) {
+			memset16_rgb8888(bits, ptr[1], n << 1);
+			bits += n*2 ;
+		} else {
+			memset16(bits, ptr[1], n << 1);
+			bits += n;
+		}
+
 		max -= n;
 		ptr += 2;
 		count -= 4;

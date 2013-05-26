@@ -654,12 +654,6 @@ int mddi_himax_workround_enable(void)
 EXPORT_SYMBOL(mddi_himax_workround_enable);
 #endif
 
-void mddi_enable_high_clk(uint32 enable)
-{
-	if(lcdid == LCDID_TRULY || lcdid == LCDID_TDT)
-		mdp4_mddi_high_clk = enable;
-}
-EXPORT_SYMBOL(mddi_enable_high_clk);
 static void pmic_set_lcd_intensity(int level)
 {
 	int ret;
@@ -696,7 +690,6 @@ static void mddi_ry002z_lcd_set_backlight(struct msm_fb_data_type *mfd)
 
 static int mddi_ry002z_lcd_on(struct platform_device *pdev)
 {
-	mddi_enable_high_clk(1);
 	mddi_ry002z_lcd_ic_init();
 
 #ifdef CONFIG_DEBUG_FS
@@ -722,7 +715,6 @@ static int mddi_ry002z_lcd_off(struct platform_device *pdev)
 	lcd_driver_state.display_on = 0;
 	lcd_driver_state.is_sleep = 1;
 #endif
-	mddi_enable_high_clk(0);	
 	pr_info("%s\n", __func__);
 
 	return 0;

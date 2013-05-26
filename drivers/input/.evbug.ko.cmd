@@ -1,0 +1,1 @@
+cmd_drivers/input/evbug.ko := /home/jinxxed/Source/cm-10.1/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/jinxxed/PatrickPalm/samsung-kernel-msm7x30/scripts/module-common.lds --build-id  -o drivers/input/evbug.ko drivers/input/evbug.o drivers/input/evbug.mod.o

@@ -1,0 +1,983 @@
+Binär fil .git/objects/pack/pack-5c546787584fbc475341d575e92b3697643479d4.pack matchar
+Binär fil .git/index matchar
+padaconfig~:# Dpram support
+padaconfig~:CONFIG_DPRAM=y
+padaconfig~:CONFIG_DPRAM_WHITELIST=y
+sound/soc/sh/fsi.c:	 * meaning that more FIFOs than the required size of DPRAM
+drivers/tty/serial/cpm_uart/cpm_uart_core.c:	         (u8 __iomem *)pinfo->rx_bd_base - DPRAM_BASE);
+drivers/tty/serial/cpm_uart/cpm_uart_core.c:	         (u8 __iomem *)pinfo->tx_bd_base - DPRAM_BASE);
+drivers/tty/serial/cpm_uart/cpm_uart_core.c:	         (u8 __iomem *)pinfo->rx_bd_base - DPRAM_BASE);
+drivers/tty/serial/cpm_uart/cpm_uart_core.c:	         (u8 __iomem *)pinfo->tx_bd_base - DPRAM_BASE);
+drivers/tty/serial/cpm_uart/cpm_uart_core.c:		 * If the buffer address is in the CPM DPRAM, don't
+drivers/tty/serial/cpm_uart/cpm_uart_core.c:	/* If the buffer address is in the CPM DPRAM, don't
+drivers/tty/serial/cpm_uart/cpm_uart_cpm1.h:#define DPRAM_BASE	((u8 __iomem __force *)cpm_dpram_addr(0))
+drivers/tty/serial/cpm_uart/cpm_uart_cpm1.c:	dp_mem = cpm_dpram_addr(dp_offset);
+drivers/tty/serial/cpm_uart/cpm_uart_cpm1.c:		mem_addr = (u8 *) cpm_dpram_addr(cpm_dpalloc(memsz, 8));
+drivers/tty/serial/cpm_uart/cpm_uart_cpm1.c:		dma_addr = (u32)cpm_dpram_phys(mem_addr);
+drivers/tty/serial/cpm_uart/cpm_uart_cpm2.c:	dp_mem = cpm_dpram_addr(dp_offset);
+drivers/tty/serial/cpm_uart/cpm_uart_cpm2.h:#define DPRAM_BASE	((u8 __iomem __force *)cpm_dpram_addr(0))
+drivers/tty/serial/68360serial.c:	 * buffer in the CPM DPRAM.  This will work until the CPM and
+drivers/net/ucc_geth.c:					ugeth_err("fill_init_enet_entries: Can not allocate DPRAM memory.");
+drivers/net/ucc_geth.c:			    ("%s: Can not allocate DPRAM memory for p_tx_glbl_pram.",
+drivers/net/ucc_geth.c:			    ("%s: Can not allocate DPRAM memory for p_thread_data_tx.",
+drivers/net/ucc_geth.c:			    ("%s: Can not allocate DPRAM memory for p_send_q_mem_reg.",
+drivers/net/ucc_geth.c:				 ("%s: Can not allocate DPRAM memory for p_scheduler.",
+drivers/net/ucc_geth.c:				    ("%s: Can not allocate DPRAM memory for"
+drivers/net/ucc_geth.c:			    ("%s: Can not allocate DPRAM memory for p_rx_glbl_pram.",
+drivers/net/ucc_geth.c:			    ("%s: Can not allocate DPRAM memory for p_thread_data_rx.",
+drivers/net/ucc_geth.c:					("%s: Can not allocate DPRAM memory for"
+drivers/net/ucc_geth.c:			    ("%s: Can not allocate DPRAM memory for"
+drivers/net/ucc_geth.c:			    ("%s: Can not allocate DPRAM memory for p_rx_bd_qs_tbl.",
+drivers/net/ucc_geth.c:					("%s: Can not allocate DPRAM memory for"
+drivers/net/ucc_geth.c:	 * the structure in DPRAM is released, because DPRAM is a premium
+drivers/net/ucc_geth.c:			    ("%s: Can not allocate DPRAM memory for p_init_enet_pram.",
+drivers/net/wan/wanxlfw.S:	DPRAM BDs:
+drivers/net/can/softing/softing_main.c:/* reset DPRAM */
+drivers/net/can/softing/softing_main.c:static inline void softing_set_reset_dpram(struct softing *card)
+drivers/net/can/softing/softing_main.c:		iowrite8(ioread8(&card->dpram[DPRAM_V2_RESET]) & ~1,
+drivers/net/can/softing/softing_main.c:				&card->dpram[DPRAM_V2_RESET]);
+drivers/net/can/softing/softing_main.c:static inline void softing_clr_reset_dpram(struct softing *card)
+drivers/net/can/softing/softing_main.c:		iowrite8(ioread8(&card->dpram[DPRAM_V2_RESET]) | 1,
+drivers/net/can/softing/softing_main.c:				&card->dpram[DPRAM_V2_RESET]);
+drivers/net/can/softing/softing_main.c:	uint8_t buf[DPRAM_TX_SIZE];
+drivers/net/can/softing/softing_main.c:	fifo_wr = ioread8(&card->dpram[DPRAM_TX_WR]);
+drivers/net/can/softing/softing_main.c:	fifo_rd = ioread8(&card->dpram[DPRAM_TX_RD]);
+drivers/net/can/softing/softing_main.c:	memcpy_toio(&card->dpram[DPRAM_TX + DPRAM_TX_SIZE * fifo_wr],
+drivers/net/can/softing/softing_main.c:			buf, DPRAM_TX_SIZE);
+drivers/net/can/softing/softing_main.c:	if (++fifo_wr >= DPRAM_TX_CNT)
+drivers/net/can/softing/softing_main.c:	iowrite8(fifo_wr, &card->dpram[DPRAM_TX_WR]);
+drivers/net/can/softing/softing_main.c: * pop 1 entry from the DPRAM queue, and process
+drivers/net/can/softing/softing_main.c:	uint8_t buf[DPRAM_RX_SIZE];
+drivers/net/can/softing/softing_main.c:	lost_msg = ioread8(&card->dpram[DPRAM_RX_LOST]);
+drivers/net/can/softing/softing_main.c:		iowrite8(0, &card->dpram[DPRAM_RX_LOST]);
+drivers/net/can/softing/softing_main.c:	fifo_rd = ioread8(&card->dpram[DPRAM_RX_RD]);
+drivers/net/can/softing/softing_main.c:	fifo_wr = ioread8(&card->dpram[DPRAM_RX_WR]);
+drivers/net/can/softing/softing_main.c:	if (++fifo_rd >= DPRAM_RX_CNT)
+drivers/net/can/softing/softing_main.c:	memcpy_fromio(buf, &card->dpram[DPRAM_RX + DPRAM_RX_SIZE*fifo_rd],
+drivers/net/can/softing/softing_main.c:			DPRAM_RX_SIZE);
+drivers/net/can/softing/softing_main.c:	iowrite8(fifo_rd, &card->dpram[DPRAM_RX_RD]);
+drivers/net/can/softing/softing_main.c:		/* update DPRAM */
+drivers/net/can/softing/softing_main.c:		iowrite8(state, &card->dpram[priv->index ?
+drivers/net/can/softing/softing_main.c:				DPRAM_INFO_BUSSTATE2 : DPRAM_INFO_BUSSTATE]);
+drivers/net/can/softing/softing_main.c:	ir = ioread8(&card->dpram[DPRAM_V2_IRQ_TOHOST]);
+drivers/net/can/softing/softing_main.c:	iowrite8(0, &card->dpram[DPRAM_V2_IRQ_TOHOST]);
+drivers/net/can/softing/softing_main.c:	ir = ioread8(&card->dpram[DPRAM_IRQ_TOHOST]);
+drivers/net/can/softing/softing_main.c:	iowrite8(0, &card->dpram[DPRAM_IRQ_TOHOST]);
+drivers/net/can/softing/softing_main.c:		softing_set_reset_dpram(card);
+drivers/net/can/softing/softing_main.c:	softing_set_reset_dpram(card);
+drivers/net/can/softing/softing_main.c:	for (j = 0; (j + sizeof(stream)) < card->dpram_size;
+drivers/net/can/softing/softing_main.c:		memcpy_toio(&card->dpram[j], stream, sizeof(stream));
+drivers/net/can/softing/softing_main.c:		memcpy_fromio(back, &card->dpram[j], sizeof(stream));
+drivers/net/can/softing/softing_main.c:		dev_alert(&card->pdev->dev, "dpram failed at 0x%04x\n", j);
+drivers/net/can/softing/softing_main.c:	ret = softing_load_fw(card->pdat->boot.fw, card, card->dpram,
+drivers/net/can/softing/softing_main.c:				card->dpram_size,
+drivers/net/can/softing/softing_main.c:	ret = softing_load_fw(card->pdat->load.fw, card, card->dpram,
+drivers/net/can/softing/softing_main.c:				card->dpram_size,
+drivers/net/can/softing/softing_main.c:	softing_clr_reset_dpram(card);
+drivers/net/can/softing/softing_main.c:	softing_set_reset_dpram(card);
+drivers/net/can/softing/softing_main.c:	iounmap(card->dpram);
+drivers/net/can/softing/softing_main.c:	card->dpram_phys = pres->start;
+drivers/net/can/softing/softing_main.c:	card->dpram_size = pres->end - pres->start + 1;
+drivers/net/can/softing/softing_main.c:	card->dpram = ioremap_nocache(card->dpram_phys, card->dpram_size);
+drivers/net/can/softing/softing_main.c:	if (!card->dpram) {
+drivers/net/can/softing/softing_main.c:		dev_alert(&card->pdev->dev, "dpram ioremap failed\n");
+drivers/net/can/softing/softing_main.c:	iounmap(card->dpram);
+drivers/net/can/softing/softing_main.c:MODULE_DESCRIPTION("Softing DPRAM CAN driver");
+drivers/net/can/softing/softing_platform.h:	unsigned long dpram_size;
+drivers/net/can/softing/softing_cs.c:	.dpram_size = 0x0800,
+drivers/net/can/softing/softing_cs.c:	.dpram_size = 0x0800,
+drivers/net/can/softing/softing_cs.c:	.dpram_size = 0x0800,
+drivers/net/can/softing/softing_cs.c:	.dpram_size = 0x1000,
+drivers/net/can/softing/softing_cs.c:	.dpram_size = 0x0800,
+drivers/net/can/softing/softing_cs.c:	.dpram_size = 0x0800,
+drivers/net/can/softing/softing_cs.c:	.dpram_size = 0x1000,
+drivers/net/can/softing/softing_cs.c:	.dpram_size = 0x0800,
+drivers/net/can/softing/softing_cs.c:	.dpram_size = 0x1000,
+drivers/net/can/softing/softing_fw.c: * low level DPRAM command.
+drivers/net/can/softing/softing_fw.c: * Make sure that card->dpram[DPRAM_FCT_HOST] is preset
+drivers/net/can/softing/softing_fw.c:	iowrite16(cmd, &card->dpram[DPRAM_FCT_PARAM]);
+drivers/net/can/softing/softing_fw.c:	iowrite8(vector >> 8, &card->dpram[DPRAM_FCT_HOST + 1]);
+drivers/net/can/softing/softing_fw.c:	iowrite8(vector, &card->dpram[DPRAM_FCT_HOST]);
+drivers/net/can/softing/softing_fw.c:		/* DPRAM_FCT_HOST is _not_ aligned */
+drivers/net/can/softing/softing_fw.c:		ret = ioread8(&card->dpram[DPRAM_FCT_HOST]) +
+drivers/net/can/softing/softing_fw.c:			(ioread8(&card->dpram[DPRAM_FCT_HOST + 1]) << 8);
+drivers/net/can/softing/softing_fw.c:			return ioread16(&card->dpram[DPRAM_FCT_RESULT]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(RES_NONE, &card->dpram[DPRAM_RECEIPT]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(cmd, &card->dpram[DPRAM_COMMAND]);
+drivers/net/can/softing/softing_fw.c:		ret = ioread16(&card->dpram[DPRAM_RECEIPT]);
+drivers/net/can/softing/softing_fw.c:		__iomem uint8_t *dpram, unsigned int size, int offset)
+drivers/net/can/softing/softing_fw.c:		memcpy_toio(&dpram[addr + offset], dat, len);
+drivers/net/can/softing/softing_fw.c:		memcpy_fromio(buf, &dpram[addr + offset], len);
+drivers/net/can/softing/softing_fw.c:			dev_alert(&card->pdev->dev, "DPRAM readback failed\n");
+drivers/net/can/softing/softing_fw.c:		memcpy_toio(&card->dpram[card->pdat->app.offs], dat, len);
+drivers/net/can/softing/softing_fw.c:				&card->dpram[DPRAM_COMMAND + 2]);
+drivers/net/can/softing/softing_fw.c:		iowrite32(addr, &card->dpram[DPRAM_COMMAND + 6]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(len, &card->dpram[DPRAM_COMMAND + 10]);
+drivers/net/can/softing/softing_fw.c:		iowrite8(1, &card->dpram[DPRAM_COMMAND + 12]);
+drivers/net/can/softing/softing_fw.c:		rx_sum = ioread16(&card->dpram[DPRAM_RECEIPT + 2]);
+drivers/net/can/softing/softing_fw.c:	iowrite32(start_addr, &card->dpram[DPRAM_COMMAND + 2]);
+drivers/net/can/softing/softing_fw.c:	iowrite8(1, &card->dpram[DPRAM_COMMAND + 6]);
+drivers/net/can/softing/softing_fw.c:		iowrite8(0, &card->dpram[DPRAM_RESET_RX_FIFO]);
+drivers/net/can/softing/softing_fw.c:		iowrite8(0, &card->dpram[DPRAM_RESET_RX_FIFO+1]);
+drivers/net/can/softing/softing_fw.c:		iowrite8(1, &card->dpram[DPRAM_RESET]);
+drivers/net/can/softing/softing_fw.c:		iowrite8(0, &card->dpram[DPRAM_RESET+1]);
+drivers/net/can/softing/softing_fw.c:	card->id.serial = ioread32(&card->dpram[DPRAM_FCT_PARAM]);
+drivers/net/can/softing/softing_fw.c:	card->id.fw_version = ioread16(&card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:	card->id.hw_version = ioread16(&card->dpram[DPRAM_FCT_PARAM + 4]);
+drivers/net/can/softing/softing_fw.c:	card->id.license = ioread16(&card->dpram[DPRAM_FCT_PARAM + 6]);
+drivers/net/can/softing/softing_fw.c:	card->id.chip[0] = ioread16(&card->dpram[DPRAM_FCT_PARAM + 8]);
+drivers/net/can/softing/softing_fw.c:	card->id.chip[1] = ioread16(&card->dpram[DPRAM_FCT_PARAM + 10]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(bt->brp, &card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(bt->sjw, &card->dpram[DPRAM_FCT_PARAM + 4]);
+drivers/net/can/softing/softing_fw.c:				&card->dpram[DPRAM_FCT_PARAM + 6]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(bt->phase_seg2, &card->dpram[DPRAM_FCT_PARAM + 8]);
+drivers/net/can/softing/softing_fw.c:				&card->dpram[DPRAM_FCT_PARAM + 10]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0, &card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0, &card->dpram[DPRAM_FCT_PARAM + 4]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x0000, &card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x07ff, &card->dpram[DPRAM_FCT_PARAM + 4]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x0000, &card->dpram[DPRAM_FCT_PARAM + 6]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0xffff, &card->dpram[DPRAM_FCT_PARAM + 8]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x0000, &card->dpram[DPRAM_FCT_PARAM + 10]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x1fff, &card->dpram[DPRAM_FCT_PARAM + 12]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(priv->output, &card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(bt->brp, &card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(bt->sjw, &card->dpram[DPRAM_FCT_PARAM + 4]);
+drivers/net/can/softing/softing_fw.c:				&card->dpram[DPRAM_FCT_PARAM + 6]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(bt->phase_seg2, &card->dpram[DPRAM_FCT_PARAM + 8]);
+drivers/net/can/softing/softing_fw.c:				&card->dpram[DPRAM_FCT_PARAM + 10]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0, &card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0, &card->dpram[DPRAM_FCT_PARAM + 4]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x0000, &card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x07ff, &card->dpram[DPRAM_FCT_PARAM + 4]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x0000, &card->dpram[DPRAM_FCT_PARAM + 6]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0xffff, &card->dpram[DPRAM_FCT_PARAM + 8]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x0000, &card->dpram[DPRAM_FCT_PARAM + 10]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(0x1fff, &card->dpram[DPRAM_FCT_PARAM + 12]);
+drivers/net/can/softing/softing_fw.c:		iowrite16(priv->output, &card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 2]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 4]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 6]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 8]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 10]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 12]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 14]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 16]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 18]);
+drivers/net/can/softing/softing_fw.c:	iowrite16(1, &card->dpram[DPRAM_FCT_PARAM + 20]);
+drivers/net/can/softing/softing_fw.c:	iowrite8(0, &card->dpram[DPRAM_INFO_BUSSTATE]);
+drivers/net/can/softing/softing_fw.c:	iowrite8(0, &card->dpram[DPRAM_INFO_BUSSTATE2]);
+drivers/net/can/softing/softing_fw.c:		iowrite8(0, &card->dpram[DPRAM_V2_IRQ_TOHOST]);
+drivers/net/can/softing/softing_fw.c:		/* flush the DPRAM caches */
+drivers/net/can/softing/softing.h:	spinlock_t spin; /* protect this structure & DPRAM access */
+drivers/net/can/softing/softing.h:		unsigned int dpram_position;
+drivers/net/can/softing/softing.h:	__iomem uint8_t *dpram;
+drivers/net/can/softing/softing.h:	unsigned long dpram_phys;
+drivers/net/can/softing/softing.h:	unsigned long dpram_size;
+drivers/net/can/softing/softing.h:/* SOFTING DPRAM mappings */
+drivers/net/can/softing/softing.h:#define DPRAM_RX		0x0000
+drivers/net/can/softing/softing.h:	#define DPRAM_RX_SIZE	32
+drivers/net/can/softing/softing.h:	#define DPRAM_RX_CNT	16
+drivers/net/can/softing/softing.h:#define DPRAM_RX_RD		0x0201	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_RX_WR		0x0205	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_RX_LOST		0x0207	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_FCT_PARAM		0x0300	/* int16_t [20] */
+drivers/net/can/softing/softing.h:#define DPRAM_FCT_RESULT	0x0328	/* int16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_FCT_HOST		0x032b	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_INFO_BUSSTATE	0x0331	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_INFO_BUSSTATE2	0x0335	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_INFO_ERRSTATE	0x0339	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_INFO_ERRSTATE2	0x033d	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_RESET		0x0341	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_CLR_RECV_FIFO	0x0345	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_RESET_TIME	0x034d	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_TIME		0x0350	/* uint64_t */
+drivers/net/can/softing/softing.h:#define DPRAM_WR_START		0x0358	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_WR_END		0x0359	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_RESET_RX_FIFO	0x0361	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_RESET_TX_FIFO	0x0364	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_READ_FIFO_LEVEL	0x0365	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_RX_FIFO_LEVEL	0x0366	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_TX_FIFO_LEVEL	0x0366	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_TX		0x0400	/* uint16_t */
+drivers/net/can/softing/softing.h:	#define DPRAM_TX_SIZE	16
+drivers/net/can/softing/softing.h:	#define DPRAM_TX_CNT	32
+drivers/net/can/softing/softing.h:#define DPRAM_TX_RD		0x0601	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_TX_WR		0x0605	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_COMMAND		0x07e0	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_RECEIPT		0x07f0	/* uint16_t */
+drivers/net/can/softing/softing.h:#define DPRAM_IRQ_TOHOST	0x07fe	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_IRQ_TOCARD	0x07ff	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_V2_RESET		0x0e00	/* uint8_t */
+drivers/net/can/softing/softing.h:#define DPRAM_V2_IRQ_TOHOST	0x0e02	/* uint8_t */
+drivers/net/can/softing/softing.h:#define TXMAX	(DPRAM_TX_CNT - 1)
+drivers/net/can/softing/softing.h:/* DPRAM return codes */
+drivers/net/can/softing/softing.h:/* DPRAM flags */
+drivers/net/fs_enet/mac-fcc.c:	fpi->dpram_offset = cpm_dpalloc(128, 32);
+drivers/net/fs_enet/mac-fcc.c:	if (IS_ERR_VALUE(fpi->dpram_offset)) {
+drivers/net/fs_enet/mac-fcc.c:		ret = fpi->dpram_offset;
+drivers/net/fs_enet/mac-fcc.c:	/* Allocate space in the reserved FCC area of DPRAM for the
+drivers/net/fs_enet/mac-fcc.c:	W16(ep, fen_genfcc.fcc_riptr, fpi->dpram_offset);
+drivers/net/fs_enet/mac-fcc.c:	W16(ep, fen_genfcc.fcc_tiptr, fpi->dpram_offset + 32);
+drivers/net/fs_enet/mac-fcc.c:	W16(ep, fen_padptr, fpi->dpram_offset + 64);
+drivers/net/fs_enet/mac-fcc.c:	memset_io(fep->fcc.mem + fpi->dpram_offset + 64, 0x88, 32);
+drivers/net/fs_enet/mac-scc.c:		cpm_dpram_addr(fep->ring_mem_addr);
+drivers/net/fs_enet/fs_enet.h:			void __iomem *mem;	/* FCC DPRAM */
+drivers/isdn/hysdn/hysdn_defs.h:	unsigned long membase;	/* DPRAM memory base */
+drivers/isdn/hysdn/hysdn_defs.h:	unsigned long memend;	/* DPRAM memory end */
+drivers/isdn/hysdn/hysdn_defs.h:	void *dpram;		/* mapped dpram */
+drivers/isdn/hysdn/hysdn_boot.c:			hysdn_addlog(card, "POF open: DPRAM test failure");
+drivers/isdn/hysdn/hysdn_boot.c:		boot->last_error = -ERR_BOARD_DPRAM;
+drivers/isdn/hysdn/boardergo.c: * DPRAM interface and layout with only minor differences all related
+drivers/isdn/hysdn/boardergo.c:	tErgDpram *dpr;
+drivers/isdn/hysdn/boardergo.c:	dpr = card->dpram;
+drivers/isdn/hysdn/boardergo.c:	tErgDpram *dpr;
+drivers/isdn/hysdn/boardergo.c:	dpr = card->dpram;	/* point to DPRAM */
+drivers/isdn/hysdn/boardergo.c:	tErgDpram *dpr = card->dpram;
+drivers/isdn/hysdn/boardergo.c:/* then the 1024 lo-bytes are written. The remaining DPRAM is cleared, the   */
+drivers/isdn/hysdn/boardergo.c:	tErgDpram *dpram;
+drivers/isdn/hysdn/boardergo.c:	dst = card->dpram;	/* pointer to start of DPRAM */
+drivers/isdn/hysdn/boardergo.c:	dst += (offs + ERG_DPRAM_FILL_SIZE);	/* offset in the DPRAM */
+drivers/isdn/hysdn/boardergo.c:	/* if low words (offs = 2) have been written, clear the rest of the DPRAM, */
+drivers/isdn/hysdn/boardergo.c:		memset(card->dpram, 0, ERG_DPRAM_FILL_SIZE);	/* fill the DPRAM still not cleared */
+drivers/isdn/hysdn/boardergo.c:		dpram = card->dpram;	/* get pointer to dpram structure */
+drivers/isdn/hysdn/boardergo.c:		dpram->ToHyNoDpramErrLog = 0xFF;	/* write a dpram register */
+drivers/isdn/hysdn/boardergo.c:		while (!dpram->ToHyNoDpramErrLog);	/* reread volatile register to flush PCI */
+drivers/isdn/hysdn/boardergo.c:		if (((tDpramBootSpooler *) card->dpram)->Len != DPRAM_SPOOLER_DATA_SIZE) {
+drivers/isdn/hysdn/boardergo.c:	tDpramBootSpooler *sp = (tDpramBootSpooler *) card->dpram;
+drivers/isdn/hysdn/boardergo.c:	tErgDpram *dpr = card->dpram;	/* pointer to DPRAM structure */
+drivers/isdn/hysdn/boardergo.c:/* reset. Also unmap dpram.                                                         */
+drivers/isdn/hysdn/boardergo.c:	iounmap(card->dpram);
+drivers/isdn/hysdn/boardergo.c:	card->dpram = NULL;	/* release shared mem */
+drivers/isdn/hysdn/boardergo.c:/* acquire the needed hardware ports and map dpram. If an error occurs a nonzero */
+drivers/isdn/hysdn/boardergo.c:	card->memend = card->membase + ERG_DPRAM_PAGE_SIZE - 1;
+drivers/isdn/hysdn/boardergo.c:	if (!(card->dpram = ioremap(card->membase, ERG_DPRAM_PAGE_SIZE))) {
+drivers/isdn/hysdn/ince1pc.h:/*--------------------------------------DPRAM boot spooler------------------*/ 
+drivers/isdn/hysdn/ince1pc.h:#define DPRAM_SPOOLER_DATA_SIZE 0x20
+drivers/isdn/hysdn/ince1pc.h:typedef struct DpramBootSpooler_tag {
+drivers/isdn/hysdn/ince1pc.h:/*03 */ unsigned char Data[DPRAM_SPOOLER_DATA_SIZE];
+drivers/isdn/hysdn/ince1pc.h:} tDpramBootSpooler;
+drivers/isdn/hysdn/ince1pc.h:#define DPRAM_SPOOLER_MIN_SIZE  5       /* Len+RdPtr+Wrptr+2*data */
+drivers/isdn/hysdn/ince1pc.h:#define DPRAM_SPOOLER_DEF_SIZE  0x23    /* current default size   */
+drivers/isdn/hysdn/ince1pc.h:/*--------------------------------------HYCARD/ERGO DPRAM SoftUart----------*/ 
+drivers/isdn/hysdn/ince1pc.h:				    /* at DPRAM offset 0x1C00: */ 
+drivers/isdn/hysdn/boardergo.h:#define ERG_DPRAM_PAGE_SIZE 0x2000	/* DPRAM occupies a 8K page */
+drivers/isdn/hysdn/boardergo.h:#define ERG_DPRAM_FILL_SIZE (ERG_DPRAM_PAGE_SIZE - BOOT_IMG_SIZE)
+drivers/isdn/hysdn/boardergo.h:/* following DPRAM layout copied from OS2-driver boarderg.h */
+drivers/isdn/hysdn/boardergo.h:typedef struct ErgDpram_tag {
+drivers/isdn/hysdn/boardergo.h:/*1FFC */ unsigned char volatile ToHyNoDpramErrLog;
+drivers/isdn/hysdn/boardergo.h:	/* note: ToHyNoDpramErrLog is used to inform
+drivers/isdn/hysdn/boardergo.h:	 *       boot loader, not to use DPRAM based
+drivers/isdn/hysdn/boardergo.h:} tErgDpram;
+drivers/Makefile:obj-y				+= dpram/
+drivers/media/dvb/ttpci/av7110_hw.c: * the DPRAM which implements a simple boot protocol */
+drivers/media/dvb/ttpci/av7110_hw.c:	iwdebi(av7110, DEBISWAP, DPRAM_BASE, 0x76543210, 4);
+drivers/media/dvb/ttpci/av7110_hw.c:	iwdebi(av7110, DEBISWAP, DPRAM_BASE, 0x76543210, 4);
+drivers/media/dvb/ttpci/av7110_hw.c:	if ((ret=irdebi(av7110, DEBINOSWAP, DPRAM_BASE, 0, 4)) != 0x10325476) {
+drivers/media/dvb/ttpci/av7110_hw.c:		iwdebi(av7110, DEBISWAP, DPRAM_BASE + i, 0x00, 4);
+drivers/media/dvb/ttpci/av7110_hw.c:	mwdebi(av7110, DEBISWAB, DPRAM_BASE, fw->data, fw->size);
+drivers/media/dvb/ttpci/av7110_hw.c:	dprintk(1, "load dpram code\n");
+drivers/media/dvb/ttpci/av7110_hw.c:	mwdebi(av7110, DEBISWAB, DPRAM_BASE, av7110->bin_dpram, av7110->size_dpram);
+drivers/media/dvb/ttpci/av7110.h:	unsigned char *bin_dpram;
+drivers/media/dvb/ttpci/av7110.h:	unsigned long size_dpram;
+drivers/media/dvb/ttpci/av7110.c:/* irq from av7110 firmware writing the mailbox register in the DPRAM */
+drivers/media/dvb/ttpci/av7110.c:		start_debi_dma(av7110, DEBI_WRITE, DPRAM_BASE + txbuf, len);
+drivers/media/dvb/ttpci/av7110.c:		start_debi_dma(av7110, DEBI_WRITE, DPRAM_BASE + txbuf, len);
+drivers/media/dvb/ttpci/av7110.c:		start_debi_dma(av7110, DEBI_WRITE, DPRAM_BASE+txbuf, len);
+drivers/media/dvb/ttpci/av7110.c:		start_debi_dma(av7110, DEBI_READ, DPRAM_BASE+rxbuf, len);
+drivers/media/dvb/ttpci/av7110.c:	/* check dpram file */
+drivers/media/dvb/ttpci/av7110.c:		printk("dvb-ttpci: dpram file is way too big.\n");
+drivers/media/dvb/ttpci/av7110.c:		printk("dvb-ttpci: crc32 of dpram file does not match.\n");
+drivers/media/dvb/ttpci/av7110.c:	av7110->bin_dpram = ptr;
+drivers/media/dvb/ttpci/av7110.c:	av7110->size_dpram = len;
+drivers/media/dvb/ttpci/av7110_hw.h:#define	DPRAM_BASE 0x4000
+drivers/media/dvb/ttpci/av7110_hw.h:#define AV7110_BOOT_STATE	(DPRAM_BASE + 0x3F8)
+drivers/media/dvb/ttpci/av7110_hw.h:#define AV7110_BOOT_SIZE	(DPRAM_BASE + 0x3FA)
+drivers/media/dvb/ttpci/av7110_hw.h:#define AV7110_BOOT_BASE	(DPRAM_BASE + 0x3FC)
+drivers/media/dvb/ttpci/av7110_hw.h:#define AV7110_BOOT_BLOCK	(DPRAM_BASE + 0x400)
+drivers/media/dvb/ttpci/av7110_hw.h:#define IRQ_STATE	(DPRAM_BASE + 0x0F4)
+drivers/media/dvb/ttpci/av7110_hw.h:#define IRQ_STATE_EXT	(DPRAM_BASE + 0x0F6)
+drivers/media/dvb/ttpci/av7110_hw.h:#define MSGSTATE	(DPRAM_BASE + 0x0F8)
+drivers/media/dvb/ttpci/av7110_hw.h:#define COMMAND		(DPRAM_BASE + 0x0FC)
+drivers/media/dvb/ttpci/av7110_hw.h:#define COM_BUFF	(DPRAM_BASE + 0x100)
+drivers/media/dvb/ttpci/av7110_hw.h:#define BUFF1_BASE	(DPRAM_BASE + 0x120)
+drivers/media/dvb/ttpci/av7110_hw.h:#define DATA_BUFF0_BASE	(DPRAM_BASE + 0x200)
+drivers/media/dvb/ttpci/av7110_hw.h:#define Reserved	(DPRAM_BASE + 0x1E00)
+drivers/media/dvb/ttpci/av7110_hw.h:#define STATUS_BASE	(DPRAM_BASE + 0x1FC0)
+drivers/media/dvb/ttpci/av7110_hw.h:#define RX_TYPE		(DPRAM_BASE + 0x1FE8)
+drivers/media/dvb/ttpci/av7110_hw.h:#define RX_LEN		(DPRAM_BASE + 0x1FEA)
+drivers/media/dvb/ttpci/av7110_hw.h:#define TX_TYPE		(DPRAM_BASE + 0x1FEC)
+drivers/media/dvb/ttpci/av7110_hw.h:#define TX_LEN		(DPRAM_BASE + 0x1FEE)
+drivers/media/dvb/ttpci/av7110_hw.h:#define RX_BUFF		(DPRAM_BASE + 0x1FF4)
+drivers/media/dvb/ttpci/av7110_hw.h:#define TX_BUFF		(DPRAM_BASE + 0x1FF6)
+drivers/media/dvb/ttpci/av7110_hw.h:#define HANDSHAKE_REG	(DPRAM_BASE + 0x1FF8)
+drivers/media/dvb/ttpci/av7110_hw.h:#define COM_IF_LOCK	(DPRAM_BASE + 0x1FFA)
+drivers/media/dvb/ttpci/av7110_hw.h:#define IRQ_RX		(DPRAM_BASE + 0x1FFC)
+drivers/media/dvb/ttpci/av7110_hw.h:#define IRQ_TX		(DPRAM_BASE + 0x1FFE)
+drivers/scsi/gdth.c:    register gdt2_dpram_str __iomem *dp2_ptr;
+drivers/scsi/gdth.c:    ha->brd = ioremap(bios_adr, sizeof(gdt2_dpram_str));
+drivers/scsi/gdth.c:    register gdt6_dpram_str __iomem *dp6_ptr;
+drivers/scsi/gdth.c:    register gdt6c_dpram_str __iomem *dp6c_ptr;
+drivers/scsi/gdth.c:    register gdt6m_dpram_str __iomem *dp6m_ptr;
+drivers/scsi/gdth.c:        ha->brd = ioremap(pcistr->dpmem, sizeof(gdt6_dpram_str));
+drivers/scsi/gdth.c:                ha->brd = ioremap(i, sizeof(gdt6_dpram_str)); 
+drivers/scsi/gdth.c:        ha->brd = ioremap(pcistr->dpmem, sizeof(gdt6c_dpram_str));
+drivers/scsi/gdth.c:                ha->brd = ioremap(i, sizeof(gdt6c_dpram_str)); 
+drivers/scsi/gdth.c:        ha->brd = ioremap(pcistr->dpmem, sizeof(gdt6m_dpram_str));
+drivers/scsi/gdth.c:                ha->brd = ioremap(i, sizeof(gdt6m_dpram_str)); 
+drivers/scsi/gdth.c:    gdt2_dpram_str __iomem *dp2_ptr;
+drivers/scsi/gdth.c:    gdt6_dpram_str __iomem *dp6_ptr;
+drivers/scsi/gdth.c:    gdt6m_dpram_str __iomem *dp6m_ptr;
+drivers/scsi/gdth.c:                readb(&((gdt2_dpram_str __iomem *)ha->brd)->u.ic.Cmd_Index);
+drivers/scsi/gdth.c:                readb(&((gdt6_dpram_str __iomem *)ha->brd)->u.ic.Cmd_Index);
+drivers/scsi/gdth.c:                readb(&((gdt6m_dpram_str __iomem *)ha->brd)->i960r.edoor_reg);
+drivers/scsi/gdth.c:        gdtsema0 = (int)readb(&((gdt2_dpram_str __iomem *)ha->brd)->u.ic.Sema0);
+drivers/scsi/gdth.c:        gdtsema0 = (int)readb(&((gdt6_dpram_str __iomem *)ha->brd)->u.ic.Sema0);
+drivers/scsi/gdth.c:            (int)readb(&((gdt6m_dpram_str __iomem *)ha->brd)->i960r.sema0_reg);
+drivers/scsi/gdth.c:        writeb(1, &((gdt2_dpram_str __iomem *)ha->brd)->u.ic.Sema0);
+drivers/scsi/gdth.c:        writeb(1, &((gdt6_dpram_str __iomem *)ha->brd)->u.ic.Sema0);
+drivers/scsi/gdth.c:        writeb(1, &((gdt6m_dpram_str __iomem *)ha->brd)->i960r.sema0_reg);
+drivers/scsi/gdth.c:    register gdt6m_dpram_str __iomem *dp6m_ptr;
+drivers/scsi/gdth.c:    register gdt6c_dpram_str __iomem *dp6c_ptr;
+drivers/scsi/gdth.c:    gdt6_dpram_str __iomem *dp6_ptr;
+drivers/scsi/gdth.c:    gdt2_dpram_str __iomem *dp2_ptr;
+drivers/scsi/gdth.c:        writeb(0, &((gdt2_dpram_str __iomem *)ha->brd)->io.event);
+drivers/scsi/gdth.c:        writeb(0, &((gdt6_dpram_str __iomem *)ha->brd)->io.event);
+drivers/scsi/gdth.c:        writeb(1, &((gdt6m_dpram_str __iomem *)ha->brd)->i960r.ldoor_reg);
+drivers/scsi/gdth.c:    gdt6m_dpram_str __iomem *dp6m_ptr = NULL;
+drivers/scsi/gdth.c:    gdt6_dpram_str __iomem *dp6_ptr;
+drivers/scsi/gdth.c:    gdt2_dpram_str __iomem *dp2_ptr;
+drivers/scsi/gdth.c:                        (&((gdt6m_dpram_str __iomem *)ha->brd)->i960r.severity);
+drivers/scsi/gdth.c:                            (&((gdt6m_dpram_str __iomem *)ha->brd)->i960r.evt_str[i]);
+drivers/scsi/gdth.h:/* DPRAM structures */
+drivers/scsi/gdth.h:        u16          offset;                 /* command offs. in the DPRAM*/
+drivers/scsi/gdth.h:/* DPRAM ISA controllers */
+drivers/scsi/gdth.h:        u8          memlock;                /* write protection DPRAM */
+drivers/scsi/gdth.h:} __attribute__((packed)) gdt2_dpram_str;
+drivers/scsi/gdth.h:/* DPRAM PCI controllers */
+drivers/scsi/gdth.h:} __attribute__((packed)) gdt6_dpram_str;
+drivers/scsi/gdth.h:    u8              cfg_reg;        /* DPRAM cfg.(2:below 1MB,0:anywhere)*/
+drivers/scsi/gdth.h:/* DPRAM new PCI controllers */
+drivers/scsi/gdth.h:} __attribute__((packed)) gdt6c_dpram_str;
+drivers/scsi/gdth.h:/* DPRAM PCI MPR controllers */
+drivers/scsi/gdth.h:} __attribute__((packed)) gdt6m_dpram_str;
+drivers/scsi/gdth.h:    unsigned long               dpmem;                  /* DPRAM address */
+drivers/scsi/gdth.h:    void __iomem        *brd;                   /* DPRAM address */
+drivers/scsi/gdth.h:    u16              cmd_cnt;                /* command count in DPRAM */
+drivers/scsi/gdth.h:    u16              cmd_offs_dpmem;         /* actual offset in DPRAM */
+drivers/scsi/gdth.h:    u16              ic_all_size;            /* sizeof DPRAM interf. area */
+drivers/i2c/busses/i2c-cpm.c:#define DPRAM_BASE		((u8 __iomem __force *)cpm_muram_addr(0))
+drivers/i2c/busses/i2c-cpm.c:	out_be16(&i2c_ram->tbase, (u8 __iomem *)cpm->tbase - DPRAM_BASE);
+drivers/i2c/busses/i2c-cpm.c:	out_be16(&i2c_ram->rbase, (u8 __iomem *)cpm->rbase - DPRAM_BASE);
+drivers/i2c/busses/i2c-cpm.c:		(u8 __iomem *)cpm->tbase - DPRAM_BASE,
+drivers/i2c/busses/i2c-cpm.c:		(u8 __iomem *)cpm->rbase - DPRAM_BASE);
+drivers/Kconfig~:source "drivers/dpram/Kconfig"
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:// Size of DPRAM Command
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define	FT1000_REG_DPRAM_DATA	0x000C	// DPRAM VALUE in DPRAM ADDR
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:	u32 nTxMsg;                    // DPRAM msg sent to DSP with app_id
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:	u32 nRxMsg;                    // DPRAM msg rcv from dsp with app_id
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:	u32 nTxMsgReject;              // DPRAM msg rejected due to DSP doorbell set
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:	u32 nRxMsgMiss;                // DPRAM msg dropped due to overflow
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:	wait_queue_head_t wait_dpram_msg;
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define	FT1000_REG_DPRAM_ADDR	0x000E	// DPRAM ADDRESS when card in IO mode
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_DB_DPRAM_RX		0x0001	// this value indicates that DSP has
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:                                        //      data for host in DPRAM SlowQ
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_DB_DPRAM_TX		0x0100	// this value indicates that host has
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:                                        //      data for DSP in DPRAM.
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:// Electrabuzz specific DPRAM mapping                                        //      has a heartbeat message for DSP.
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_DPRAM_BASE		0x1000	//  0x0000 to 0x07FF	DPRAM	2Kx16 - R/W from PCMCIA or DSP
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_DPRAM_TX_BASE	0x1002	//  TX AREA (SlowQ)
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_DPRAM_RX_BASE	0x1800	//  RX AREA (SlowQ)
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_DPRAM_SIZE       0x1000  //  4K bytes
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define DSP_TIMESTAMP_DIFF      0x1FFA  // difference of dsp timestamp in DPRAM and Pseudo header.
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_DPRAM_FEFE    	0x1002	// Dsp Downloader handshake location
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_DPRAM_MAG_TX_BASE	 	 0x0000	 //  TX AREA (SlowQ)
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_DPRAM_MAG_RX_BASE		 0x0200	 //  RX AREA (SlowQ)
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_MAG_DPRAM_FEFE            0x000   // location for dsp ready indicator
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:#define FT1000_MAG_DPRAM_FEFE_INDX       0x0     // location for dsp ready indicator
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:    spinlock_t dpram_lock;
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:struct dpram_blk {
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:int ft1000_read_dpram32(struct ft1000_device *ft1000dev, u16 indx, u8 *buffer, u16 cnt);
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:int ft1000_write_dpram32(struct ft1000_device *ft1000dev, u16 indx, u8 *buffer, u16 cnt);
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:int ft1000_read_dpram16(struct ft1000_device *ft1000dev, u16 indx, u8 *buffer, u8 highlow);
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:int ft1000_write_dpram16(struct ft1000_device *ft1000dev, u16 indx, u16 value, u8 highlow);
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:int fix_ft1000_read_dpram32(struct ft1000_device *ft1000dev, u16 indx, u8 *buffer);
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:int fix_ft1000_write_dpram32(struct ft1000_device *ft1000dev, u16 indx, u8 *buffer);
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:struct dpram_blk *ft1000_get_buffer(struct list_head *bufflist);
+drivers/staging/ft1000/ft1000-usb/ft1000_usb.h:void ft1000_free_buffer(struct dpram_blk *pdpram_blk, struct list_head *plist);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:#define HARLEY_READ_DPRAM_32     0x02
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:#define HARLEY_READ_DPRAM_LOW    0x03
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:#define HARLEY_READ_DPRAM_HIGH   0x04
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:#define HARLEY_WRITE_DPRAM_32    0x05
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:#define HARLEY_WRITE_DPRAM_LOW   0x06
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:#define HARLEY_WRITE_DPRAM_HIGH  0x07
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Function:    ft1000_read_dpram32
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c://              cnt - number of byte read from DPRAM
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Description: This function read a number of bytes from DPRAM
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:int ft1000_read_dpram32(struct ft1000_device *ft1000dev, u16 indx, u8 *buffer,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			     HARLEY_READ_DPRAM_32,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Function:    ft1000_write_dpram32
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c://              buffer - data buffer to write into DPRAM
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Description: This function writes into DPRAM a number of bytes
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:int ft1000_write_dpram32(struct ft1000_device *ft1000dev, u16 indx, u8 *buffer,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			     HARLEY_WRITE_DPRAM_32,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Function:    ft1000_read_dpram16
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Description: This function read 16 bits from DPRAM
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:int ft1000_read_dpram16(struct ft1000_device *ft1000dev, u16 indx, u8 *buffer,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		request = HARLEY_READ_DPRAM_LOW;
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		request = HARLEY_READ_DPRAM_HIGH;
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Function:    ft1000_write_dpram16
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Description: This function writes into DPRAM a number of bytes
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:int ft1000_write_dpram16(struct ft1000_device *ft1000dev, u16 indx, u16 value, u8 highlow)
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		request = HARLEY_WRITE_DPRAM_LOW;
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		request = HARLEY_WRITE_DPRAM_HIGH;
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Function:    fix_ft1000_read_dpram32
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Description: This function read DPRAM 4 words at a time
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:int fix_ft1000_read_dpram32(struct ft1000_device *ft1000dev, u16 indx,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	ret = ft1000_read_dpram32(ft1000dev, pos, buf, 16);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		DEBUG("fix_ft1000_read_dpram32: DPRAM32 Read failed\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Function:    fix_ft1000_write_dpram32
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Description: This function write to DPRAM 4 words at a time
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:int fix_ft1000_write_dpram32(struct ft1000_device *ft1000dev, u16 indx, u8 *buffer)
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	ret = ft1000_read_dpram32(ft1000dev, pos1, buf, 16);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		ret = ft1000_write_dpram32(ft1000dev, pos1, buf, 16);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		DEBUG("fix_ft1000_write_dpram32: DPRAM32 Read failed\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	ret = ft1000_read_dpram32(ft1000dev, pos1, (u8 *)&resultbuffer[0], 16);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		ret = ft1000_write_dpram32(ft1000dev, pos1,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		ret = ft1000_read_dpram32(ft1000dev, pos1,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	ft1000_write_dpram32(ft1000dev, 0, commandbuf, size);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	ft1000_write_register(ft1000dev, FT1000_DB_DPRAM_TX,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	    ft1000_read_dpram32(ft1000dev, FT1000_MAG_DPRAM_FEFE_INDX,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	ft1000_write_dpram16(ft1000dev, FT1000_MAG_HI_HO, ho_mag,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	ft1000_read_dpram16(ft1000dev, FT1000_MAG_HI_HO, (u8 *) &tempword,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	struct dpram_blk *pdpram_blk;
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	spin_lock_init(&pInfo->dpram_lock);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		/* Get memory for DPRAM_DATA link list */
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		pdpram_blk = kmalloc(sizeof(struct dpram_blk), GFP_KERNEL);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		if (pdpram_blk == NULL) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		pdpram_blk->pbuffer = kmalloc(MAX_CMD_SQSIZE, GFP_KERNEL);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		if (pdpram_blk->pbuffer == NULL) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			kfree(pdpram_blk);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		list_add_tail(&pdpram_blk->list, &freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		pdpram_blk = list_entry(cur, struct dpram_blk, list);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		list_del(&pdpram_blk->list);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		kfree(pdpram_blk->pbuffer);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		kfree(pdpram_blk);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:// Description: This function will read a message from the dpram area.
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	    ft1000_read_dpram16(dev, FT1000_MAG_PH_LEN, (u8 *) &size,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		ft1000_write_register(dev, FT1000_DPRAM_MAG_RX_BASE,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:				      FT1000_REG_DPRAM_ADDR);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		ft1000_write_register(dev, FT1000_DPRAM_MAG_RX_BASE + 1,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:				      FT1000_REG_DPRAM_ADDR);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:						 FT1000_REG_DPRAM_DATA);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		while (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:		if (!(tempword & FT1000_DB_DPRAM_TX)) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			    ft1000_write_dpram32(dev, 0,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			    ft1000_write_register(dev, FT1000_DB_DPRAM_TX,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	status = ft1000_read_dpram32(dev, 0x200, cmdbuffer, size);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:				if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:					if (tempword & FT1000_DB_DPRAM_TX)
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			    ft1000_write_dpram32(dev, 0,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			    ft1000_write_register(dev, FT1000_DB_DPRAM_TX,
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:				if (tempword & FT1000_DB_DPRAM_TX)
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			if ((tempword & FT1000_DB_DPRAM_TX) == 0) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	struct dpram_blk *pdpram_blk;
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:        if (tempword & FT1000_DB_DPRAM_RX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:            status = ft1000_read_dpram16(dev, 0x200, (u8 *)&data, 0);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:            status = ft1000_read_dpram16(dev, 0x201, (u8 *)&portid, 1);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                        DEBUG("ft1000_poll: FT1000_REG_DOORBELL message type: FT1000_DB_DPRAM_RX : portid DRIVERID\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			       nxtph = FT1000_DPRAM_RX_BASE + 2;
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			       pdpram_blk = ft1000_get_buffer (&freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			       if (pdpram_blk != NULL) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:			           if ( ft1000_receive_cmd(dev, pdpram_blk->pbuffer, MAX_CMD_SQSIZE, &nxtph) ) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:					ppseudo_hdr = (struct pseudo_hdr *)pdpram_blk->pbuffer;
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:				       list_add_tail(&pdpram_blk->list, &info->app_info[i].app_sqlist);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:				       wake_up_interruptible(&info->app_info[i].wait_dpram_msg);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:				       ft1000_free_buffer(pdpram_blk, &freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:				       DEBUG("pdpram_blk::ft1000_get_buffer NULL\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                        pdpram_blk = ft1000_get_buffer (&freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                        if (pdpram_blk != NULL) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                           if ( ft1000_receive_cmd(dev, pdpram_blk->pbuffer, MAX_CMD_SQSIZE, &nxtph) ) {
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:				ppseudo_hdr = (struct pseudo_hdr *)pdpram_blk->pbuffer;
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                                   DEBUG("FT1000:ft1000_parse_dpram_msg: No application matching id = %d\n", ppseudo_hdr->portdest);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                                   ft1000_free_buffer(pdpram_blk, &freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:	                               ft1000_free_buffer(pdpram_blk, &freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                                       list_add_tail(&pdpram_blk->list, &info->app_info[i].app_sqlist);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                               ft1000_free_buffer(pdpram_blk, &freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:            status = ft1000_write_register (dev, FT1000_DB_DPRAM_RX, FT1000_REG_DOORBELL);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:            status = ft1000_write_dpram32 (dev, 0, (u8 *)&info->DSPSess.Rec[0], 1024);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                status    = ft1000_read_dpram16(dev, FT1000_MAG_DSP_TIMER0, (u8 *)&(info->DSP_TIME[0]), FT1000_MAG_DSP_TIMER0_INDX);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                status    = ft1000_read_dpram16(dev, FT1000_MAG_DSP_TIMER1, (u8 *)&(info->DSP_TIME[1]), FT1000_MAG_DSP_TIMER1_INDX);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                status    = ft1000_read_dpram16(dev, FT1000_MAG_DSP_TIMER2, (u8 *)&(info->DSP_TIME[2]), FT1000_MAG_DSP_TIMER2_INDX);
+drivers/staging/ft1000/ft1000-usb/ft1000_hw.c:                status    = ft1000_read_dpram16(dev, FT1000_MAG_DSP_TIMER3, (u8 *)&(info->DSP_TIME[3]), FT1000_MAG_DSP_TIMER3_INDX);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:		status = ft1000_read_dpram16(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c://              in DPRAM
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:	status = ft1000_write_dpram16(ft1000dev, DWNLD_MAG1_HANDSHAKE_LOC,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:	status = ft1000_write_dpram16(ft1000dev, DWNLD_MAG1_HANDSHAKE_LOC,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:			status = ft1000_read_dpram32(ft1000dev, 0,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:			status = ft1000_read_dpram16(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:			DEBUG("handshake from read_dpram16 = 0x%x\n",
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:			status = ft1000_read_dpram16(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:		status = fix_ft1000_read_dpram32(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:		status = ft1000_read_dpram16(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:		status = fix_ft1000_read_dpram32(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:			status = ft1000_read_dpram16(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:		status = fix_ft1000_read_dpram32(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:		status = ft1000_read_dpram16(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:		status = ft1000_read_dpram16(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c://              long lvalue - value to be put into DPRAM location DWNLD_MAG1_SIZE_LOC
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:	status = fix_ft1000_write_dpram32(ft1000dev, DWNLD_MAG1_SIZE_LOC,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c://                                   to DPRAM
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:// Description: This function writes a block of DSP image to DPRAM
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:   u16 dpram;
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:   dpram = (u16)DWNLD_MAG1_PS_HDR_LOC;
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:   Status = ft1000_write_dpram16(ft1000dev, dpram, tempword, 0);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:   Status = ft1000_write_dpram16(ft1000dev, dpram++, tempword, 1);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:              //DEBUG("write_blk: dpram = %x\n", dpram);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:		 if (dpram >= 0x3F4)
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:                     Status = ft1000_write_dpram32 (ft1000dev, dpram, (u8 *)&tempbuffer[0], 8);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:                    Status = ft1000_write_dpram32 (ft1000dev, dpram, (u8 *)&tempbuffer[0], 64);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:                   Status = ft1000_write_dpram32 (ft1000dev, dpram, (u8 *)&tempbuffer[0], 64);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:      		           Status = ft1000_write_dpram32(ft1000dev, dpram+12, (u8 *)&tempbuffer[24], 64);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:	    	       Status = ft1000_read_dpram32 (ft1000dev, dpram, (u8 *)&resultbuffer[0], 64);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					DEBUG("FT1000:download:DPRAM write failed 1 during bootloading\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:   			   Status = ft1000_read_dpram32 (ft1000dev, dpram+12, (u8 *)&resultbuffer[0], 64);
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					DEBUG("FT1000:download:DPRAM write failed 2 during bootloading\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					DEBUG("FT1000:download:DPRAM write failed 3 during bootloading\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:   	     dpram = dpram + loopcnt;
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c://                                   to DPRAM
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:// Description: This function writes a block of DSP image to DPRAM
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:	u16 dpram = 0;
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					dpram = (u16) DWNLD_MAG1_PS_HDR_LOC;
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					dpram = (u16) DWNLD_MAG1_PS_HDR_LOC;
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:						ft1000_write_dpram16(ft1000dev,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					dpram = (u16) DWNLD_MAG1_PS_HDR_LOC;
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:						    fix_ft1000_write_dpram32
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:						    (ft1000dev, dpram++,
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:					dpram = (u16) DWNLD_MAG1_PS_HDR_LOC;
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:						    fix_ft1000_write_dpram32
+drivers/staging/ft1000/ft1000-usb/ft1000_download.c:						    (ft1000dev, dpram++,
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:struct dpram_blk *ft1000_get_buffer(struct list_head *bufflist)
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:	struct dpram_blk *ptr;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:	ptr = list_entry(bufflist->next, struct dpram_blk, list);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:void ft1000_free_buffer(struct dpram_blk *pdpram_blk, struct list_head *plist)
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:    list_add_tail(&pdpram_blk->list, plist);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:        init_waitqueue_head(&info->app_info[i].wait_dpram_msg);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:	struct dpram_blk *pdpram_blk;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:	struct dpram_blk *ptr;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                pdpram_blk = list_entry(info->app_info[i].app_sqlist.next, struct dpram_blk, list);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                list_del(&pdpram_blk->list);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                ft1000_free_buffer(pdpram_blk, &freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:            wake_up_interruptible(&info->app_info[i].wait_dpram_msg);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:		ptr = list_entry(freercvpool.next, struct dpram_blk, list);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:    poll_wait (file, &info->app_info[i].wait_dpram_msg, wait);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                ft1000_read_dpram16(ft1000dev, FT1000_MAG_DSP_LED, (u8 *)&ledStat, FT1000_MAG_DSP_LED_INDX);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                ft1000_read_dpram16(ft1000dev, FT1000_MAG_DSP_CON_STATE, (u8 *)&conStat, FT1000_MAG_DSP_CON_STATE_INDX);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:    case IOCTL_SET_DPRAM_CMD:
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:            IOCTL_DPRAM_BLK *dpram_data = NULL;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:            //IOCTL_DPRAM_COMMAND dpram_command;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:            //DEBUG("FT1000:ft1000_ioctl: IOCTL_FT1000_SET_DPRAM called\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:               //DEBUG("FT1000:ft1000_ioctl: try to SET_DPRAM \n");
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:		dpram_data = kmalloc(msgsz + 2, GFP_KERNEL);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:		if (!dpram_data)
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                if ( copy_from_user(dpram_data, argp, msgsz+2) ) {
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:			kfree(dpram_data);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                    qtype = ntohs(dpram_data->pseudohdr.qos_class) & 0xff;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                        // Only put a message into the DPRAM if msg doorbell is available
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                        if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                            if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                                if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                                    if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                                        if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:						kfree(dpram_data);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                            pmsg = (u16 *)&dpram_data->pseudohdr;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                           card_send_command(ft1000dev,(unsigned short*)dpram_data,total_len+2);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:	    kfree(dpram_data);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:    case IOCTL_GET_DPRAM_CMD:
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:		struct dpram_blk *pdpram_blk;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:            IOCTL_DPRAM_BLK __user *pioctl_dpram;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:            //DEBUG("FT1000:ft1000_ioctl: IOCTL_FT1000_GET_DPRAM called\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:            pioctl_dpram = argp;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                pdpram_blk = list_entry(info->app_info[i].app_sqlist.next, struct dpram_blk, list);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                list_del(&pdpram_blk->list);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                msglen = ntohs(*(u16 *)pdpram_blk->pbuffer) + PSEUDOSZ;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                result = get_user(msglen, &pioctl_dpram->total_len);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                if(copy_to_user (&pioctl_dpram->pseudohdr, pdpram_blk->pbuffer, msglen))
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:                ft1000_free_buffer(pdpram_blk, &freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:            //DEBUG("FT1000:ft1000_ioctl: IOCTL_FT1000_GET_DPRAM no message\n");
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:	struct dpram_blk *pdpram_blk;
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:        pdpram_blk = list_entry(info->app_info[i].app_sqlist.next, struct dpram_blk, list);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:        list_del(&pdpram_blk->list);
+drivers/staging/ft1000/ft1000-usb/ft1000_debug.c:        ft1000_free_buffer(pdpram_blk, &freercvpool);
+drivers/staging/ft1000/ft1000-usb/ft1000_ioctl.h:typedef struct _IOCTL_DPRAM_BLK
+drivers/staging/ft1000/ft1000-usb/ft1000_ioctl.h:} __attribute__ ((packed)) IOCTL_DPRAM_BLK, *PIOCTL_DPRAM_BLK;
+drivers/staging/ft1000/ft1000-usb/ft1000_ioctl.h:typedef struct _IOCTL_DPRAM_COMMAND
+drivers/staging/ft1000/ft1000-usb/ft1000_ioctl.h:    IOCTL_DPRAM_BLK dpram_blk;
+drivers/staging/ft1000/ft1000-usb/ft1000_ioctl.h:} __attribute__ ((packed)) IOCTL_DPRAM_COMMAND, *PIOCTL_DPRAM_COMMAND;
+drivers/staging/ft1000/ft1000-usb/ft1000_ioctl.h:#define IOCTL_SET_DPRAM_CMD					3
+drivers/staging/ft1000/ft1000-usb/ft1000_ioctl.h:#define IOCTL_GET_DPRAM_CMD					4
+drivers/staging/ft1000/ft1000-usb/ft1000_ioctl.h:#define IOCTL_FT1000_SET_DPRAM _IOW (FT1000_MAGIC_CODE, IOCTL_SET_DPRAM_CMD, sizeof(IOCTL_DPRAM_BLK) )
+drivers/staging/ft1000/ft1000-usb/ft1000_ioctl.h:#define IOCTL_FT1000_GET_DPRAM _IOR (FT1000_MAGIC_CODE, IOCTL_GET_DPRAM_CMD, sizeof(IOCTL_DPRAM_BLK) )
+drivers/staging/ft1000/ft1000-usb/ft1000_proc.c:int ft1000_read_dpram16 (struct ft1000_device *ft1000dev, u16 indx,
+drivers/staging/ft1000/ft1000-usb/ft1000_proc.c:		ft1000_read_dpram16(info->pFt1000Dev, FT1000_MAG_DSP_LED,
+drivers/staging/ft1000/ft1000-usb/ft1000_proc.c:		ft1000_read_dpram16(info->pFt1000Dev, FT1000_MAG_DSP_CON_STATE,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Function:   ft1000_read_dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Description: This function will read the specific area of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://     offset - index of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://     value  - value of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:u16 ft1000_read_dpram(struct net_device * dev, int offset)
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR, offset);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	data = ft1000_read_reg(dev, FT1000_REG_DPRAM_DATA);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Function:   ft1000_write_dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Description: This function will write to a specific area of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://     offset - index of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:static inline void ft1000_write_dpram(struct net_device *dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR, offset);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	ft1000_write_reg(dev, FT1000_REG_DPRAM_DATA, value);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Function:   ft1000_read_dpram_mag_16
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Description: This function will read the specific area of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://     offset - index of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://     value  - value of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:u16 ft1000_read_dpram_mag_16(struct net_device *dev, int offset, int Index)
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR, offset);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Function:   ft1000_write_dpram_mag_16
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Description: This function will write to a specific area of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://     offset - index of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:static inline void ft1000_write_dpram_mag_16(struct net_device *dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR, offset);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Function:   ft1000_read_dpram_mag_32
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Description: This function will read the specific area of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://     offset - index of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://     value  - value of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:u32 ft1000_read_dpram_mag_32(struct net_device *dev, int offset)
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR, offset);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Function:   ft1000_write_dpram_mag_32
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Description: This function will write to a specific area of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://     offset - index of dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:void ft1000_write_dpram_mag_32(struct net_device *dev, int offset, u32 value)
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR, offset);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:						 FT1000_DPRAM_RX_BASE);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:								FT1000_REG_DPRAM_DATA);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					 FT1000_DPRAM_MAG_RX_BASE);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram_mag_16(dev, FT1000_MAG_DPRAM_FEFE,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:							 FT1000_MAG_DPRAM_FEFE_INDX);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_dpram(dev, FT1000_FIFO_LEN, info->fifo_cnt);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_dpram(dev, FT1000_HI_HO, ho);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		tempword = ft1000_read_dpram(dev, FT1000_HI_HO);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_dpram_mag_16(dev, FT1000_MAG_HI_HO, ho_mag,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_read_dpram_mag_16(dev, FT1000_MAG_HI_HO,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			tempword = ft1000_read_dpram(dev, FT1000_HI_HO);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ntohs(ft1000_read_dpram_mag_16
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				tempword = ft1000_read_dpram(dev, FT1000_HI_HO);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				tempword = ntohs(ft1000_read_dpram_mag_16(dev, FT1000_MAG_HI_HO, FT1000_MAG_HI_HO_INDX));
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER0);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER1);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER2);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER3);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER0);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER1);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER2);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER3);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_dpram(dev, FT1000_HI_HO, hi);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_dpram_mag_16(dev, FT1000_MAG_HI_HO, hi_mag,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			tempword = ft1000_read_dpram(dev, FT1000_HI_HO);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ntohs(ft1000_read_dpram_mag_16
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_write_dpram(dev, FT1000_HI_HO, hi);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_write_dpram_mag_16(dev, FT1000_MAG_HI_HO, hi_mag, FT1000_MAG_HI_HO_INDX);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				tempword = ft1000_read_dpram(dev, FT1000_HI_HO);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				tempword = ntohs(ft1000_read_dpram_mag_16(dev, FT1000_MAG_HI_HO, FT1000_MAG_HI_HO_INDX));
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				   "ft1000: heartbeat failed - cannot write hi into DPRAM\n");
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER0);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER1);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER2);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram(dev, FT1000_DSP_TIMER3);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:    while (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:            spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				 FT1000_DPRAM_TX_BASE);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		// Write total length to dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_DATA, size);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_reg(dev, FT1000_REG_DPRAM_DATA, tempword);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				 FT1000_DPRAM_MAG_TX_BASE);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		// Write total length to dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				 FT1000_DPRAM_MAG_TX_BASE + 1);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	ft1000_write_reg(dev, FT1000_REG_DOORBELL, FT1000_DB_DPRAM_TX);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Description: This function will read a message from the dpram area.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		size = ( ft1000_read_dpram(dev, *pnxtph) ) + PSEUDOSZ;
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ntohs(ft1000_read_dpram_mag_16
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					 FT1000_DPRAM_RX_BASE + 2);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					ft1000_read_reg(dev, FT1000_REG_DPRAM_DATA);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					 FT1000_DPRAM_MAG_RX_BASE);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					 FT1000_DPRAM_MAG_RX_BASE + 1);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			tempword = ft1000_read_reg(dev, FT1000_REG_DPRAM_DATA);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:        tempword = FT1000_DPRAM_RX_BASE+2;
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:        tempword = FT1000_DPRAM_MAG_RX_BASE;
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				while (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			if ((tempword & FT1000_DB_DPRAM_TX) == 0) {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				if (tempword & FT1000_DB_DPRAM_TX) {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			if ((tempword & FT1000_DB_DPRAM_TX) == 0) {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:// Function:   ft1000_parse_dpram_msg
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c://             via the DPRAM interface.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:int ft1000_parse_dpram_msg(struct net_device *dev)
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					 FT1000_DPRAM_RX_BASE);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_write_reg(dev, FT1000_REG_DPRAM_DATA,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					 FT1000_DPRAM_MAG_RX_BASE);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			  "FT1000:ft1000_parse_dpram_msg: Got a dsp ASIC reset message\n");
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	if (doorbell & FT1000_DB_DPRAM_RX) {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			  "FT1000:ft1000_parse_dpram_msg: Got a slow queue message\n");
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		nxtph = FT1000_DPRAM_RX_BASE + 2;
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram(dev, FT1000_DPRAM_RX_BASE);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ntohs(ft1000_read_dpram_mag_16
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		DEBUG(1, "FT1000:ft1000_parse_dpram_msg:total length = %d\n",
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					(ft1000_read_dpram
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					  DSP_QID_OFFSET + FT1000_DPRAM_RX_BASE +
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:					(ft1000_read_dpram_mag_16
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_reg(dev, FT1000_REG_DOORBELL, FT1000_DB_DPRAM_RX);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram(dev, FT1000_DSP_TIMER0);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram(dev, FT1000_DSP_TIMER1);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram(dev, FT1000_DSP_TIMER2);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram(dev, FT1000_DSP_TIMER3);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram_mag_16(dev, FT1000_MAG_DSP_TIMER0,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram_mag_16(dev, FT1000_MAG_DSP_TIMER1,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram_mag_16(dev, FT1000_MAG_DSP_TIMER2,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram_mag_16(dev, FT1000_MAG_DSP_TIMER3,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		doorbell & ~(FT1000_DB_DPRAM_RX | FT1000_ASIC_RESET_REQ |
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram(dev, FT1000_DSP_TIMER0);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram(dev, FT1000_DSP_TIMER1);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram(dev, FT1000_DSP_TIMER2);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram(dev, FT1000_DSP_TIMER3);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram_mag_16(dev, FT1000_MAG_DSP_TIMER0,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram_mag_16(dev, FT1000_MAG_DSP_TIMER1,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram_mag_16(dev, FT1000_MAG_DSP_TIMER2,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:				ft1000_read_dpram_mag_16(dev, FT1000_MAG_DSP_TIMER3,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:						ft1000_read_dpram(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:						ft1000_read_dpram(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:						ft1000_read_dpram(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:						ft1000_read_dpram(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:						ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:						ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:						ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:						ft1000_read_dpram_mag_16(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:			ft1000_write_dpram(dev, FT1000_FIFO_LEN,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR, FT1000_FIFO_LEN);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_DATA, info->fifo_cnt);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:		ft1000_parse_dpram_msg(dev);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c:	spin_lock_init(&info->dpram_lock);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define	FT1000_REG_DPRAM_ADDR	0x000E	// DPADR - Dual Port Ram Indirect Address Register
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define	FT1000_REG_DPRAM_DATA	0x000C	// DPRAM - Dual Port Indirect Data Register
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_DPRAM_TX_BASE	0x0002	// Host to PC Card Messaging Area
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_DPRAM_RX_BASE	0x0800	// PC Card to Host Messaging Area
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_DPRAM_FEFE       0x002   // location for dsp ready indicator
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_DPRAM_MAG_TX_BASE		 0x0000	 //  Host to PC Card Messaging Area
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_DPRAM_MAG_RX_BASE		 0x0200	 //  PC Card to Host Messaging Area
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_MAG_DPRAM_FEFE            0x000   // location for dsp ready indicator
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_MAG_DPRAM_FEFE_INDX       0x0     // location for dsp ready indicator
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_DB_DPRAM_RX		0x0001	// this value indicates that DSP has
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:                                        //      data for host in DPRAM
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_DB_DPRAM_TX		0x0100	// this value indicates that host has
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:                                        //      data for DSP in DPRAM.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:#define FT1000_DPRAM_BASE		0x0000	// Dual Port RAM starting offset
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:// Size of DPRAM Message
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:    spinlock_t dpram_lock;
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:typedef struct _DPRAM_BLK {
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:} __attribute__ ((packed)) DPRAM_BLK, *PDPRAM_BLK;
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:extern u16 ft1000_read_dpram (struct net_device *dev, int offset);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:extern u16 ft1000_read_dpram_mag_16 (struct net_device *dev, int offset, int Index);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:extern u32 ft1000_read_dpram_mag_32 (struct net_device *dev, int offset);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000.h:void ft1000_write_dpram_mag_32 (struct net_device *dev, int offset, u32 value);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:	spin_lock_irqsave(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:	ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR, FT1000_DPRAM_BASE);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:	spin_unlock_irqrestore(&info->dpram_lock, flags);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:			ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:			handshake = ft1000_read_reg(dev, FT1000_REG_DPRAM_DATA);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:				ntohl(ft1000_read_dpram_mag_32
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_DATA, handshake_value);	/* Handshake */
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_dpram_mag_32(dev, DWNLD_MAG_HANDSHAKE_LOC, tempx);	/* Handshake */
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR, DWNLD_TYPE_LOC);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		request_type = ft1000_read_reg(dev, FT1000_REG_DPRAM_DATA);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		tempx = ft1000_read_dpram_mag_32(dev, DWNLD_MAG_TYPE_LOC);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		w_val = ft1000_read_reg(dev, FT1000_REG_DPRAM_DATA);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		w_val = ft1000_read_reg(dev, FT1000_REG_DPRAM_DATA);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		value = ft1000_read_dpram_mag_32(dev, DWNLD_MAG_SIZE_LOC);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_DATA, size);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_reg(dev, FT1000_REG_DPRAM_DATA, size);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:		ft1000_write_dpram_mag_32(dev, DWNLD_MAG_SIZE_LOC, tempx);	/* Handshake */
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:					spin_lock_irqsave(&info->dpram_lock,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:						 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:								 FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:									 FT1000_REG_DPRAM_DATA,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:						 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:							 FT1000_REG_DPRAM_ADDR);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:								   dpram_lock,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:						 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:								 FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:									 FT1000_REG_DPRAM_DATA,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:						 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:							 FT1000_REG_DPRAM_ADDR);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:					spin_lock_irqsave(&info->dpram_lock,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:						 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:								 FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:									 FT1000_REG_DPRAM_DATA,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:						 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:							 FT1000_REG_DPRAM_ADDR);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:								   dpram_lock,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:					spin_lock_irqsave(&info->dpram_lock,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:						 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:								 FT1000_REG_DPRAM_ADDR,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:									 FT1000_REG_DPRAM_DATA,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:						 * Position ASIC DPRAM auto-increment pointer.
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:							 FT1000_REG_DPRAM_ADDR);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c:								   dpram_lock,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_proc.c:					ft1000_read_dpram(dev, FT1000_DSP_LED);
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_proc.c:					ft1000_read_dpram(dev,
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_proc.c:				ntohs(ft1000_read_dpram_mag_16
+drivers/staging/ft1000/ft1000-pcmcia/ft1000_proc.c:				ntohs(ft1000_read_dpram_mag_16
+drivers/staging/comedi/comedi.h:		COMEDI_SUBD_MEMORY,	/* memory, EEPROM, DPRAM */
+drivers/staging/generic_serial/rio/rioinit.c:	struct DpRam __iomem *cardp = (struct DpRam __iomem *)virtAddr;
+drivers/staging/generic_serial/rio/rioinit.c:	struct DpRam __iomem *DpRam = caddr;
+drivers/staging/generic_serial/rio/rioinit.c:	rio_dprintk (RIO_DEBUG_INIT, "RIO-init: Reset host type=%d, DpRam=%p, slot=%d\n",
+drivers/staging/generic_serial/rio/rioinit.c:			type, DpRam, slot);
+drivers/staging/generic_serial/rio/rioinit.c:	RIOHostReset(type, DpRam, slot);
+drivers/staging/generic_serial/rio/rioinit.c:	ram[0] = DpRam->DpSram1;
+drivers/staging/generic_serial/rio/rioinit.c:	ram[1] = DpRam->DpSram2;
+drivers/staging/generic_serial/rio/rioinit.c:	ram[2] = DpRam->DpSram3;
+drivers/staging/generic_serial/rio/rioinit.c:		ram[3] = DpRam->DpScratch;
+drivers/staging/generic_serial/rio/rioinit.c:void RIOHostReset(unsigned int Type, struct DpRam __iomem *DpRamP, unsigned int Slot)
+drivers/staging/generic_serial/rio/rioinit.c:			SLOW_LINKS | SLOW_AT_BUS, &DpRamP->DpControl);
+drivers/staging/generic_serial/rio/rioinit.c:		writeb(0xFF, &DpRamP->DpResetTpu);
+drivers/staging/generic_serial/rio/rioinit.c:			BYTE_OPERATION | SLOW_LINKS | SLOW_AT_BUS, &DpRamP->DpControl);
+drivers/staging/generic_serial/rio/rioinit.c:		writeb(0xFF, &DpRamP->DpResetTpu);
+drivers/staging/generic_serial/rio/rioinit.c:		writeb(RIO_PCI_BOOT_FROM_RAM, &DpRamP->DpControl);
+drivers/staging/generic_serial/rio/rioinit.c:		writeb(0xFF, &DpRamP->DpResetInt);
+drivers/staging/generic_serial/rio/rioinit.c:		writeb(0xFF, &DpRamP->DpResetTpu);
+drivers/staging/generic_serial/rio/host.h:	void  __iomem *Caddr;		/* KV address of DPRAM */
+drivers/staging/generic_serial/rio/host.h:	struct DpRam __iomem *CardP;	/* KV address of DPRAM, with overlay */
+drivers/staging/generic_serial/rio/host.h:	unsigned long PaddrP;		/* Phys. address of DPRAM */
+drivers/staging/generic_serial/rio/rioctrl.c:static struct HostDpRam HostDpRam;
+drivers/staging/generic_serial/rio/rioctrl.c:	case RIO_HOST_DPRAM:
+drivers/staging/generic_serial/rio/rioctrl.c:		rio_dprintk(RIO_DEBUG_CTRL, "Request for DPRAM\n");
+drivers/staging/generic_serial/rio/rioctrl.c:		if (copy_from_user(&HostDpRam, argp, sizeof(HostDpRam))) {
+drivers/staging/generic_serial/rio/rioctrl.c:			rio_dprintk(RIO_DEBUG_CTRL, "RIO_HOST_DPRAM: Copy in from user space failed\n");
+drivers/staging/generic_serial/rio/rioctrl.c:		if (HostDpRam.HostNum >= p->RIONumHosts) {
+drivers/staging/generic_serial/rio/rioctrl.c:			rio_dprintk(RIO_DEBUG_CTRL, "RIO_HOST_DPRAM: Illegal host number %d\n", HostDpRam.HostNum);
+drivers/staging/generic_serial/rio/rioctrl.c:		rio_dprintk(RIO_DEBUG_CTRL, "Request for host %d\n", HostDpRam.HostNum);
+drivers/staging/generic_serial/rio/rioctrl.c:		if (p->RIOHosts[HostDpRam.HostNum].Type == RIO_PCI) {
+drivers/staging/generic_serial/rio/rioctrl.c:			static unsigned char copy[sizeof(struct DpRam)];
+drivers/staging/generic_serial/rio/rioctrl.c:			for (off = 0; off < sizeof(struct DpRam); off++)
+drivers/staging/generic_serial/rio/rioctrl.c:				copy[off] = readb(p->RIOHosts[HostDpRam.HostNum].Caddr + off);
+drivers/staging/generic_serial/rio/rioctrl.c:			if (copy_to_user(HostDpRam.DpRamP, copy, sizeof(struct DpRam))) {
+drivers/staging/generic_serial/rio/rioctrl.c:				rio_dprintk(RIO_DEBUG_CTRL, "RIO_HOST_DPRAM: Bad copy to user space\n");
+drivers/staging/generic_serial/rio/rioctrl.c:		} else if (copy_from_io(HostDpRam.DpRamP, p->RIOHosts[HostDpRam.HostNum].Caddr, sizeof(struct DpRam))) {
+drivers/staging/generic_serial/rio/rioctrl.c:			rio_dprintk(RIO_DEBUG_CTRL, "RIO_HOST_DPRAM: Bad copy to user space\n");
+drivers/staging/generic_serial/rio/board.h:struct DpRam {
+drivers/staging/generic_serial/rio/daemon.h:struct HostDpRam {
+drivers/staging/generic_serial/rio/daemon.h:	struct DpRam __user *DpRamP;
+drivers/staging/generic_serial/rio/daemon.h:#define RIO_HOST_DPRAM	(RIOC | 173)
+drivers/staging/generic_serial/rio/rio_linux.c:		hp->CardP = (struct DpRam __iomem *) hp->Caddr;
+drivers/staging/generic_serial/rio/rio_linux.c:		hp->CardP = (struct DpRam __iomem *) hp->Caddr;
+drivers/staging/generic_serial/rio/rio_linux.c:		hp->CardP = (struct DpRam __iomem *) hp->Caddr;
+drivers/staging/generic_serial/rio/func.h:void RIOHostReset(unsigned int, struct DpRam __iomem *, unsigned int);
+arch/powerpc/platforms/82xx/Kconfig:	  The MPC8272 CPM has a different internal dpram setup than other CPM2
+arch/powerpc/include/asm/immap_cpm2.h:	/* Some references are into the unique and known dpram spaces,
+arch/powerpc/include/asm/immap_cpm2.h:#define im_dprambase	im_dpram1
+arch/powerpc/include/asm/immap_cpm2.h:	u8		im_dpram1[16*1024];
+arch/powerpc/include/asm/immap_cpm2.h:	u8		im_dpram2[4*1024];
+arch/powerpc/include/asm/immap_cpm2.h:	u8		im_dpram3[4*1024];
+arch/powerpc/include/asm/cpm2.h:#define cpm_dpram_addr cpm_muram_addr
+arch/powerpc/include/asm/cpm2.h:/* The SMCs are relocated to any of the first eight DPRAM pages.
+arch/powerpc/include/asm/cpm2.h: * We will fix these at the first locations of DPRAM, until we
+arch/powerpc/include/asm/cpm2.h:#define RCCR_ERAM_0KB	((uint)0x00000000) /* use 0KB of dpram for microcode */
+arch/powerpc/include/asm/cpm2.h:#define RCCR_ERAM_2KB	((uint)0x00002000) /* use 2KB of dpram for microcode */
+arch/powerpc/include/asm/cpm2.h:#define RCCR_ERAM_4KB	((uint)0x00004000) /* use 4KB of dpram for microcode */
+arch/powerpc/include/asm/cpm2.h:#define RCCR_ERAM_6KB	((uint)0x00006000) /* use 6KB of dpram for microcode */
+arch/powerpc/include/asm/cpm2.h:#define RCCR_ERAM_8KB	((uint)0x00008000) /* use 8KB of dpram for microcode */
+arch/powerpc/include/asm/cpm2.h:#define RCCR_ERAM_10KB	((uint)0x0000a000) /* use 10KB of dpram for microcode */
+arch/powerpc/include/asm/cpm2.h:#define RCCR_ERAM_12KB	((uint)0x0000c000) /* use 12KB of dpram for microcode */
+arch/powerpc/include/asm/cpm1.h:#define cpm_dpram_addr cpm_muram_addr
+arch/powerpc/include/asm/cpm1.h:#define cpm_dpram_phys cpm_muram_dma
+arch/powerpc/sysdev/cpm_common.c: * Use cpm_dpram_addr() to get the virtual address of the area.
+arch/powerpc/sysdev/cpm_common.c: * Use cpm_dpram_addr() to get the virtual address of the area.
+arch/arm/configs/ancora_defconfig:# Dpram support
+arch/arm/configs/ancora_defconfig:CONFIG_DPRAM=y
+arch/arm/configs/ancora_defconfig:CONFIG_DPRAM_WHITELIST=y
+arch/arm/configs/ariesve_defconfig:# Dpram support
+arch/arm/configs/ariesve_defconfig:CONFIG_DPRAM=y
+arch/arm/configs/ariesve_defconfig:CONFIG_DPRAM_WHITELIST=y
+arch/arm/configs/ancora_tmo_defconfig:# Dpram support
+arch/arm/configs/ancora_tmo_defconfig:CONFIG_DPRAM=y
+arch/arm/configs/ancora_tmo_defconfig:CONFIG_DPRAM_WHITELIST=y
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:# Dpram support
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:CONFIG_DPRAM=y
+arch/arm/configs/ancora_tmo_oc_uv_hm_defconfig:CONFIG_DPRAM_WHITELIST=y
+arch/m68k/platform/68360/commproc.c:/* QUICC  *quicc_dpram; */ /* mleslie - temporary; use extern pquicc elsewhere instead */
+arch/m68k/platform/68360/head-rom.S: * By the time this RAM specific code begins to execute, DPRAM
+arch/m68k/platform/68360/head-rom.S:	/* Now we can begin to access registers in DPRAM */
+arch/m68k/platform/68360/head-rom.S:	/* Clear DPRAM - system + parameter */
+arch/m68k/platform/68360/head-rom.S:clear_dpram:
+arch/m68k/platform/68360/head-rom.S:	bhi	clear_dpram
+arch/m68k/platform/68360/head-ram.S: * By the time this RAM specific code begins to execute, DPRAM
+arch/m68k/platform/68360/head-ram.S:	/* Now we can begin to access registers in DPRAM */
+arch/m68k/platform/68360/head-ram.S:	/* Clear DPRAM - system + parameter */
+arch/m68k/platform/68360/head-ram.S:clear_dpram:
+arch/m68k/platform/68360/head-ram.S:	bhi	clear_dpram
+arch/m68k/include/asm/commproc.h:/* mleslie: The uCquicc board is using no extra microcode in DPRAM */
+arch/m68k/include/asm/commproc.h:/* In 2.4 ppc, the PROFF_S?C? are used as byte offsets into DPRAM.
+arch/m68k/include/asm/commproc.h: * In 2.0, we use a more structured C struct map of DPRAM, and so 
+include/linux/fs_enet_pd.h:	u32 dpram_offset;
+include/linux/hysdn_if.h:#define ERR_BOARD_DPRAM   1002 /* board DPRAM failed */
+removethis:drivers/dpram/dpram.h:#if defined(CONFIG_MACH_ANCORA_TMO)

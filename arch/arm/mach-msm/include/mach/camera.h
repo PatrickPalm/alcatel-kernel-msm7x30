@@ -454,6 +454,8 @@ struct msm_sync {
 	spinlock_t abort_pict_lock;
 	int snap_count;
 	int thumb_count;
+
+	uint32_t focus_state;
 };
 
 #define MSM_APPS_ID_V4L2 "msm_v4l2"
@@ -494,8 +496,6 @@ struct msm_pmem_region {
 	unsigned long len;
 	struct file *file;
 	struct msm_pmem_info info;
-	struct msm_mapped_buffer *msm_buffer;
-	int subsys_id;
 	struct ion_handle *handle;
 };
 
