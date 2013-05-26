@@ -1,1 +1,0 @@
-cmd_drivers/crypto/msm/qce.ko := /home/jinxxed/Source/cm-10.1/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/jinxxed/PatrickPalm/samsung-kernel-msm7x30/scripts/module-common.lds --build-id  -o drivers/crypto/msm/qce.ko drivers/crypto/msm/qce.o drivers/crypto/msm/qce.mod.o

@@ -1,6 +1,0 @@
-kernel/arch/arm/mach-msm/sdio_al.ko
-kernel/arch/arm/mach-msm/sdio_al_test.ko
-kernel/arch/arm/mach-msm/sdio_al_dloader.ko
-kernel/arch/arm/mach-msm/board-broadcom-wifi.ko
-kernel/arch/arm/mach-msm/qdsp5v2/snddev_data_marimba.ko
-kernel/arch/arm/mach-msm/qdsp5v2/snddev_data_timpani.ko

@@ -1,1 +1,0 @@
-cmd_arch/arm/mach-msm/dal_remotetest.ko := /home/jinxxed/Source/cm-10.1/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/jinxxed/PatrickPalm/samsung-kernel-msm7x30/scripts/module-common.lds --build-id  -o arch/arm/mach-msm/dal_remotetest.ko arch/arm/mach-msm/dal_remotetest.o arch/arm/mach-msm/dal_remotetest.mod.o

@@ -1,4 +1,0 @@
-kernel/drivers/bluetooth/bthid.ko
-kernel/drivers/bluetooth/hci_uart.ko
-kernel/drivers/bluetooth/bluesleep.ko
-kernel/drivers/bluetooth/bluetooth-power.ko
